@@ -8,6 +8,8 @@ config_setting(
 DEFAULT_LINK_OPTS = [
     '-llz4',
     '-lsnappy',
+    '-lzstd',
+    '-lbz2',
 ]
 
 LINK_URING_OPT = [
@@ -35,4 +37,5 @@ cc_library(
     visibility = [
         "//visibility:public"
     ],
+
 )

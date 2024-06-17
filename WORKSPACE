@@ -138,7 +138,8 @@ bind(
 git_repository(
     name = "com_github_brpc_brpc",
     remote = "https://github.com/apache/incubator-brpc",
-    commit = "1b9e00641cbec1c8803da6a1f7f555398c954cb0",
+    # commit = "1b9e00641cbec1c8803da6a1f7f555398c954cb0",
+    commit = "920fd5b1ab66020d93ef68b56a736441879bdb0e",
     patches = [
         "//:thirdparties/brpc/brpc.patch",
         "//:thirdparties/brpc/fix-gcc11.patch",
@@ -151,6 +152,12 @@ git_repository(
     ],
     patch_args = ["-p1"],
 )
+
+# git_repository(
+#     name = "com_github_brpc_brpc",
+#     remote = "https://github.com/apache/brpc",
+#     commit = "2e183187bcbccc39c7da8dde2a98d02a7a031279",
+# )
 
 bind(
     name = "brpc",
@@ -308,7 +315,6 @@ http_archive(
     # Replace the commit hash in both places (below) with the latest, rather than using the stale one here.
     # Even better, set up Renovate and let it do the work for you (see "Suggestion: Updates" in the README).
     urls = [
-        "https://curve-build.nos-eastchina1.126.net/bazel-compile-commands-extractor-3dddf205a1f5cde20faf2444c1757abe0564ff4c.tar.gz",
         "https://github.com/hedronvision/bazel-compile-commands-extractor/archive/3dddf205a1f5cde20faf2444c1757abe0564ff4c.tar.gz",
     ],
     strip_prefix = "bazel-compile-commands-extractor-3dddf205a1f5cde20faf2444c1757abe0564ff4c",

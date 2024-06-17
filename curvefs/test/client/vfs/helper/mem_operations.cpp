@@ -20,6 +20,7 @@
  * Author: Jingli Chen (Wine93)
  */
 
+#include "mem_operations.h"
 #include <gtest/gtest.h>
 
 #include <vector>
@@ -237,7 +238,7 @@ CURVEFS_ERROR MemOperations::Create(Ino parent,
     return rc;
 }
 
-CURVEFS_ERROR MemOperations::Open(Ino ino, uint32_t flags) {
+CURVEFS_ERROR MemOperations::Open(Ino ino, uint32_t flags, FileOut* fileOut) {
     InodeAttr attr;
     return storage_->GetAttr(ino, &attr);
 }
@@ -276,7 +277,8 @@ CURVEFS_ERROR MemOperations::Write(Ino ino,
                                    uint64_t offset,
                                    const char* buffer,
                                    size_t size,
-                                   size_t* nwritten) {
+                                   size_t* nwritten,
+                                   FileOut* fileOut) {
     InodeAttr attr;
     auto rc = storage_->GetAttr(ino, &attr);
     if (rc != CURVEFS_ERROR::OK) {
@@ -297,6 +299,33 @@ CURVEFS_ERROR MemOperations::Write(Ino ino,
     }
     memcpy(content.data() + offset, buffer, size);
     *nwritten = size;
+    attr.set_length(content.size());
+    return storage_->UpdateAttr(ino, attr);
+}
+
+CURVEFS_ERROR MemOperations::Write(Ino ino,
+                                   uint64_t offset,
+                                   const char* buffer,
+                                   size_t size,
+                                   FileOut* fileOut) {
+    InodeAttr attr;
+    auto rc = storage_->GetAttr(ino, &attr);
+    if (rc != CURVEFS_ERROR::OK) {
+        return rc;
+    }
+
+    auto iter = contents_.find(ino);
+    if (iter == contents_.end()) {
+        contents_.emplace(ino, std::vector<char>(buffer, buffer + size));
+        attr.set_length(size);
+        return storage_->UpdateAttr(ino, attr);
+    }
+
+    auto& content = iter->second;
+    if (offset + size > content.size()) {
+        content.resize(offset + size);
+    }
+    memcpy(content.data() + offset, buffer, size);
     attr.set_length(content.size());
     return storage_->UpdateAttr(ino, attr);
 }

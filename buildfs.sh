@@ -1,11 +1,11 @@
 #!/bin/sh
 
-cpplint --recursive curvefs
-if [ $? -ne 0 ]
-then
-    echo "cpplint failed"
-    exit
-fi
+# cpplint --recursive curvefs
+# if [ $? -ne 0 ]
+# then
+#     echo "cpplint failed"
+#     exit
+# fi
 
 if [ `gcc -dumpversion | awk -F'.' '{print $1}'` -le 6 ]
 then

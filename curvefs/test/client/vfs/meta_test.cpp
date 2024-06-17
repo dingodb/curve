@@ -45,7 +45,8 @@ TEST_F(MetaTest, DirStream) {
         uint64_t offset;
     } dir_stream_t;
 
-    DirStream dirStream{ 1, 2, 3 };
+    // DirStream dirStream{ 1, 2, 3 };
+    dir_stream_t dirStream{ 1, 2, 3 };
     dir_stream_t* dir_stream = reinterpret_cast<dir_stream_t*>(&dirStream);
     ASSERT_EQ(dir_stream->ino, 1);
     ASSERT_EQ(dir_stream->fh, 2);

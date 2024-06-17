@@ -105,7 +105,7 @@ class MemOperations : public Operations {
                          uint16_t mode,
                          EntryOut* entryOut) override;
 
-    CURVEFS_ERROR Open(Ino ino, uint32_t flags) override;
+    CURVEFS_ERROR Open(Ino ino, uint32_t flags, FileOut* fileOut) override;
 
     CURVEFS_ERROR Read(Ino ino,
                        uint64_t offset,
@@ -117,7 +117,14 @@ class MemOperations : public Operations {
                         uint64_t offset,
                         const char* buffer,
                         size_t size,
-                        size_t* nwritten) override;
+                        size_t* nwritten,
+                        FileOut* fileOut);
+   
+   CURVEFS_ERROR Write(Ino ino,
+                        uint64_t offset,
+                        const char* buffer,
+                        size_t size,
+                        FileOut* fileOut) override;
 
     CURVEFS_ERROR Flush(Ino ino) override;
 
