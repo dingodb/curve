@@ -19,7 +19,7 @@ then
 DEBUG_FLAG="--compilation_mode=dbg"
 fi
 
-bazel build curvefs/...  --copt -DHAVE_ZLIB=1 ${DEBUG_FLAG} -s \
+bazel build curvefs/... --sandbox_debug  --copt -DHAVE_ZLIB=1 ${DEBUG_FLAG} -s \
 --define=with_glog=true --define=libunwind=true --copt -DGFLAGS_NS=google --copt -Wno-error=format-security --copt \
 -DUSE_BTHREAD_MUTEX --copt -DCURVEVERSION=${curve_version} --linkopt -L/usr/local/lib ${bazelflags}
 
