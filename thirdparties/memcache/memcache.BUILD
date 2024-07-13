@@ -7,7 +7,6 @@ cc_library(
     name = "libmemcached",
     srcs = glob([
         "build-libmemcached/src/libmemcached/libmemcached.so",
-        "build-libmemcached/src/libmemcached/libmemcached.so.11",
         "build-libmemcached/src/libhashkit/libhashkit.so",
     ]),
     hdrs = glob([

@@ -15,5 +15,5 @@ clean:
 	@rm -rf include lib
 
 download:
-	@git clone -b 6.28.fb https://github.com/facebook/rocksdb
-
+	# @git clone -b 6.28.fb https://github.com/facebook/rocksdb
+	@git submodule update --init rocksdb

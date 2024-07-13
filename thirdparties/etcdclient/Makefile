@@ -16,6 +16,10 @@
 
 SHELL=/bin/bash
 
+# Download and build libetcdclient, regardless of whether the code
+# is changed or not.
+all: clean install-go install-etcdclient libetcdclient
+
 pwd := $(shell pwd)
 
 
@@ -27,11 +31,6 @@ build: libetcdclient.so libetcdclient.h expose-session-for-election.patch etcdcl
 
 libetcdclient.so libetcdclient.h: # do not use `clean' and `all' targets here as they will always be built
 	$(MAKE) clean all
-
-# Download and build libetcdclient, regardless of whether the code
-# is changed or not.
-all: install-go install-etcdclient libetcdclient
-
 
 install-go:
 	mkdir -p $(pwd)/tmp

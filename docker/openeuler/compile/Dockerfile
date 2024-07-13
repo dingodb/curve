@@ -11,7 +11,7 @@ RUN yum update -y\
     && yum install -y gcc gcc-c++ bison bison-devel python3-devel python3-pip flex flex-devel cmake make wget curl git protobuf-compiler patch libevent-devel musl-gcc\
     && yum install -y unzip which zlib zlib-devel openssl openssl-devel libnl3 libnl3-devel libuuid libuuid-devel libcurl-devel boost boost-devel wget cmake tar  \
     && yum install -y libunwind libunwind-devel
-RUN wget https://github.com/bazelbuild/bazel/releases/download/4.2.2/bazel-4.2.2-installer-linux-x86_64.sh && bash bazel-4.2.2-installer-linux-x86_64.sh && rm bazel-4.2.2-installer-linux-x86_64.sh -f && cd /usr/local/ &&  wget https://golang.google.cn/dl/go1.20.6.linux-amd64.tar.gz && tar xzvf go1.20.6.linux-amd64.tar.gz && rm go1.20.6.linux-amd64.tar.gz -rf 
+RUN wget https://github.com/bazelbuild/bazel/releases/download/4.2.4/bazel-4.2.4-installer-linux-x86_64.sh && bash bazel-4.2.4-installer-linux-x86_64.sh && rm bazel-4.2.4-installer-linux-x86_64.sh -f && cd /usr/local/ &&  wget https://golang.google.cn/dl/go1.20.6.linux-amd64.tar.gz && tar xzvf go1.20.6.linux-amd64.tar.gz && rm go1.20.6.linux-amd64.tar.gz -rf 
     
 RUN wget https://curve-build.nos-eastchina1.126.net/libfiu-1.00.tar.gz && tar -zxvf libfiu-1.00.tar.gz && cd libfiu-1.00 && make libfiu && cp libfiu/*.h /usr/include && cp libfiu/libfiu.so.1.00 /usr/lib && ln -s /usr/lib/libfiu.so.1.00 /usr/lib/libfiu.so && cd .. &&rm -rf libfiu-1.00*
 RUN wget https://curve-build.nos-eastchina1.126.net/memcache/memcached-1.6.17.tar.gz \

@@ -1,3 +1,9 @@
 [submodule "nbd"]
 	path = nbd
 	url = https://github.com/opencurve/curve-nbd
+[submodule "thirdparties/rocksdb/rocksdb"]
+	path = thirdparties/rocksdb/rocksdb
+	url = https://github.com/facebook/rocksdb
+[submodule "thirdparties/memcache/libmemcached-1.1.2"]
+	path = thirdparties/memcache/libmemcached-1.1.2
+	url = https://github.com/awesomized/libmemcached

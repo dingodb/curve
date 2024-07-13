@@ -80,13 +80,13 @@ RUN sed -i 's/deb.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list && \
 RUN wget ${GITHUB_PROXY}https://github.com/bazelbuild/bazelisk/releases/download/v1.11.0/bazelisk-linux-amd64 && \
     mv bazelisk-linux-amd64 /usr/bin/bazelisk && \
     ln -sf /usr/bin/bazelisk /usr/bin/bazel && \
-    wget ${GITHUB_PROXY}https://github.com/bazelbuild/bazel/releases/download/4.2.2/bazel-4.2.2-linux-x86_64 && \
-    mkdir -p /root/.cache/bazelisk/downloads/bazelbuild/bazel-4.2.2-linux-x86_64/bin && \
-    mv bazel-4.2.2-linux-x86_64 /root/.cache/bazelisk/downloads/bazelbuild/bazel-4.2.2-linux-x86_64/bin/bazel && \
+    wget ${GITHUB_PROXY}https://github.com/bazelbuild/bazel/releases/download/4.2.4/bazel-4.2.4-linux-x86_64 && \
+    mkdir -p /root/.cache/bazelisk/downloads/bazelbuild/bazel-4.2.4-linux-x86_64/bin && \
+    mv bazel-4.2.4-linux-x86_64 /root/.cache/bazelisk/downloads/bazelbuild/bazel-4.2.4-linux-x86_64/bin/bazel && \
     wget ${GITHUB_PROXY}https://github.com/bazelbuild/bazel/releases/download/0.17.2/bazel-0.17.2-linux-x86_64 && \
     mkdir -p /root/.cache/bazelisk/downloads/bazelbuild/bazel-0.17.2-linux-x86_64/bin && \
     mv bazel-0.17.2-linux-x86_64 /root/.cache/bazelisk/downloads/bazelbuild/bazel-0.17.2-linux-x86_64/bin/bazel && \
-    chmod +x /root/.cache/bazelisk/downloads/bazelbuild/bazel-4.2.2-linux-x86_64/bin/bazel \
+    chmod +x /root/.cache/bazelisk/downloads/bazelbuild/bazel-4.2.4-linux-x86_64/bin/bazel \
         /root/.cache/bazelisk/downloads/bazelbuild/bazel-0.17.2-linux-x86_64/bin/bazel \
         /usr/bin/bazel \
         /usr/bin/bazelisk && \
