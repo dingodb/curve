@@ -1,9 +1,11 @@
 .PHONY: download build install clean
 
+all: clean download build install
+
 prefix?= "$(PWD)"
 from_source?= 0
 
-build: clean
+build:
 	@cd rocksdb && USE_RTTI=1 PORTABLE=1 make static_lib -j$(nproc)
 
 install:

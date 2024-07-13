@@ -137,9 +137,8 @@ bind(
 
 git_repository(
     name = "com_github_brpc_brpc",
-    remote = "https://github.com/apache/incubator-brpc",
-    # commit = "1b9e00641cbec1c8803da6a1f7f555398c954cb0",
-    commit = "920fd5b1ab66020d93ef68b56a736441879bdb0e",
+    remote = "https://github.com/apache/brpc",
+    commit = "1b9e00641cbec1c8803da6a1f7f555398c954cb0",
     patches = [
         "//:thirdparties/brpc/brpc.patch",
         "//:thirdparties/brpc/fix-gcc11.patch",
