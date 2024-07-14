@@ -1,5 +1,4 @@
 #!/bin/bash
-bash replace-curve-repo.sh
 WORKSPACE=`pwd`
 rm -fr ${WORKSPACE}/curve/unittest
 rm -fr ${WORKSPACE}/runlog ${WORKSPACE}/storage

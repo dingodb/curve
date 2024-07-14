@@ -39,7 +39,6 @@ cd curve
 # -v /var/run/docker.sock:/var/run/docker.sock -v /root/.docker:/root/.docker
 #--rm will automatically delete the container after the container exits, if you want to keep the container, you can remove this parameter
 docker run --rm -v $(pwd):/curve -w /curve -v ${HOME}:${HOME} --user $(id -u ${USER}):$(id -g ${USER}) -v /etc/passwd:/etc/passwd:ro -v /etc/group:/etc/group:ro --privileged -it opencurvedocker/curve-base:build-debian9 bash
-# (Optional for Chinese mainland) Replace external dependencies with domestic download points or mirror warehouses, which can speed up compilation： bash replace-curve-repo.sh
 
 # before curve v2.0
 make tar dep=1 （compile curvebs and make tar package）
@@ -80,7 +79,6 @@ For dependencies, you can refer to the installation steps in [dockerfile](../../
 
 ```bash
 git clone https://github.com/opencurve/curve.git or git clone https://gitee.com/mirrors/curve.git
-# (Mainland China optional) Replace external dependencies with domestic download points or mirror warehouses, which can speed up compilation： bash replace-curve-repo.sh
 # before curve v2.0
 make tar dep=1 （compile curvebs and make tar package）
 make deb dep=1 （compile curvebs and make debian package）

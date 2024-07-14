@@ -2,7 +2,6 @@ set -ex
 #!/bin/bash
 conf_url="/var/lib/jenkins/workspace/ansibe-conf"
 
-bash replace-curve-repo.sh
 make tar release=0
 ls *.tar.gz | xargs -n1 tar xzvf
 \cp ${conf_url}/server.ini curve/curve-ansible/

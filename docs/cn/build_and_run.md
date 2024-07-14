@@ -40,7 +40,6 @@ cd curve
 # -v /var/run/docker.sock:/var/run/docker.sock -v /root/.docker:/root/.docker
 # --rm 会在容器退出后自动删除容器,如果你想保留容器，可以去掉该参数
 docker run --rm -v $(pwd):/curve -w /curve -v ${HOME}/.cache:${HOME}/.cache -v ${HOME}/go:${HOME}/go --user $(id -u ${USER}):$(id -g ${USER}) -v /etc/passwd:/etc/passwd:ro -v /etc/group:/etc/group:ro --privileged -it opencurvedocker/curve-base:build-debian9 bash
-# （中国大陆可选）将外部依赖替换为国内下载点或镜像仓库，可以加快编译速度： bash replace-curve-repo.sh
 
 # curve v2.0 之前
 make tar dep=1 （编译 curvebs 并打tar包）
@@ -81,7 +80,6 @@ Curve的其他依赖项，均由bazel去管理，不可单独安装。
 
 ```bash
 git clone https://github.com/opencurve/curve.git 或者 git clone https://gitee.com/mirrors/curve.git
-# （中国大陆可选）将外部依赖替换为国内下载点或镜像仓库，可以加快下载速度： bash replace-curve-repo.sh
 # curve v2.0 之前
 make tar dep=1 （编译 curvebs 并打tar包）
 make deb dep=1 （编译 curvebs 并打debian包）

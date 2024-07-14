@@ -3,7 +3,6 @@ ENV GITHUB_PROXY=https://ghproxy.com/
 RUN git clone ${GITHUB_PROXY}https://github.com/opencurve/curve && \
     cd /curve && \
     git checkout a14bcd3ecdfcedd9398cbe74edf17b8173e417a0 && \
-    bash replace-curve-repo.sh && \
     make dep stor=fs && \
     bash mk-tar.sh && \
     mv curve_*.tar.gz curve_sdk.tar.gz
@@ -22,10 +21,10 @@ RUN tar -zxvf curve_sdk.tar.gz && \
     ldconfig && \
     apt update && \
     apt install -y devscripts \
-        librdmacm-dev \
-        libibverbs-dev \
-        xsltproc \
-        docbook-xsl && \
+    librdmacm-dev \
+    libibverbs-dev \
+    xsltproc \
+    docbook-xsl && \
     cd / && \
     git clone --branch curve ${GITHUB_PROXY}https://github.com/opencurve/curve-tgt && \
     cd curve-tgt && \

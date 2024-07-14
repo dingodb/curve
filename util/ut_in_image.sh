@@ -45,7 +45,6 @@ ps -ef | grep etcd | grep -v grep | grep -v gcc | awk '{print $2}' | sudo xargs 
 ps -ef | grep test | grep -v grep | grep -v gcc | awk '{print $2}' | sudo xargs kill -9 || true
 
 cd ${WORKSPACE}
-bash replace-curve-repo.sh
 mkdir runlog storage
 bazel clean --async
 sleep 5
