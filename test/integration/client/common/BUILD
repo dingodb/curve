@@ -24,7 +24,6 @@ cc_library(
     ),
     copts = CURVE_TEST_COPTS,
     defines = ["FIU_ENABLE"],
-    linkopts = ["-lfiu"],
     visibility = ["//visibility:public"],
     deps = [
         "//external:braft",
@@ -39,5 +38,6 @@ cc_library(
         "//src/common/concurrent:curve_concurrent",
         "@com_google_googletest//:gtest",
         "@com_google_googletest//:gtest_main",
+        "@libfiu",
     ],
 )

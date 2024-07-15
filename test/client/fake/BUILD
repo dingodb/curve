@@ -27,7 +27,6 @@ cc_library(
                     ],
     ),
     hdrs = glob(["*.h"]),
-    linkopts = ["-lfiu"],
     deps = [
         "@com_google_googletest//:gtest",
         "@com_google_googletest//:gtest_main",
@@ -42,7 +41,8 @@ cc_library(
         "//proto:nameserver2_cc_proto",
         "//proto:chunkserver-cc-protos",
         "//proto:schedule_cc_proto",
-        "//src/client:curve_client"
+        "//src/client:curve_client",
+        "@libfiu",
     ],
     visibility = ["//visibility:public"],
     copts = CURVE_TEST_COPTS,

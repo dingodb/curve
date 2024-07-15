@@ -25,8 +25,8 @@ cc_test(
     deps = [
             "@com_google_googletest//:gtest_main",
             "@com_google_googletest//:gtest",
+            "@libfiu",
     ],
-    linkopts = ["-lfiu"],
 )
 
 # https://docs.bazel.build/versions/master/be/c-cpp.html#cc_library

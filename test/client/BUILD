@@ -39,7 +39,6 @@ cc_test(
     ),
     copts = CURVE_TEST_COPTS,
     defines = ["UNIT_TEST", "FIU_ENABLE"],
-    linkopts = ["-lfiu"],
     visibility = ["//visibility:public"],
     deps = [
         "//external:braft",
@@ -60,6 +59,7 @@ cc_test(
         "@com_google_googletest//:gtest_main",
         "//test/integration/cluster_common:integration_cluster_common",
         "//test/client/mock:client_mock_lib",
+        "@libfiu",
     ],
 )
 
@@ -69,7 +69,6 @@ cc_test(
         "mds_failover_test.cpp"],
     copts = CURVE_TEST_COPTS,
     defines = ["UNIT_TEST", "FIU_ENABLE"],
-    linkopts = ["-lfiu"],
     visibility = ["//visibility:public"],
     deps = [
         "//external:braft",
@@ -89,6 +88,7 @@ cc_test(
         "@com_google_googletest//:gtest",
         "@com_google_googletest//:gtest_main",
         "//test/integration/cluster_common:integration_cluster_common",
+        "@libfiu",
     ],
 )
 
@@ -100,7 +100,6 @@ cc_test(
     ),
     copts = CURVE_TEST_COPTS,
     defines = ["UNIT_TEST", "FIU_ENABLE"],
-    linkopts = ["-lfiu"],
     visibility = ["//visibility:public"],
     deps = [
         "//external:braft",
@@ -118,6 +117,7 @@ cc_test(
         "//src/common/concurrent:curve_concurrent",
         "@com_google_googletest//:gtest",
         "@com_google_googletest//:gtest_main",
+        "@libfiu",
     ],
 )
 
@@ -145,7 +145,6 @@ cc_test(
     ]),
     copts = CURVE_TEST_COPTS,
     defines = ["UNIT_TEST"],
-    linkopts = ["-lfiu"],
     visibility = ["//visibility:public"],
     deps = [
         "//external:braft",
@@ -166,6 +165,7 @@ cc_test(
         "@com_google_googletest//:gtest",
         "@com_google_googletest//:gtest_main",
         "//test/integration/cluster_common:integration_cluster_common",
+        "@libfiu",
     ],
 )
 
@@ -206,7 +206,6 @@ cc_test(
     ),
     copts = CURVE_TEST_COPTS,
     defines = ["UNIT_TEST"],
-    linkopts = ["-lfiu"],
     visibility = ["//visibility:public"],
     deps = [
         "//external:braft",
@@ -226,6 +225,7 @@ cc_test(
         "@com_google_googletest//:gtest",
         "@com_google_googletest//:gtest_main",
         "//test/integration/cluster_common:integration_cluster_common",
+        "@libfiu",
     ],
 )
 
@@ -279,7 +279,6 @@ cc_test(
     ),
     copts = CURVE_TEST_COPTS,
     defines = ["UNIT_TEST"],
-    linkopts = ["-lfiu"],
     visibility = ["//visibility:public"],
     deps = [
         "//external:braft",
@@ -299,6 +298,7 @@ cc_test(
         "@com_google_googletest//:gtest",
         "@com_google_googletest//:gtest_main",
         "//test/integration/cluster_common:integration_cluster_common",
+        "@libfiu",
     ],
 )
 
@@ -335,7 +335,6 @@ cc_test(
     ],
     copts = CURVE_TEST_COPTS,
     defines = ["UNIT_TEST", "FIU_ENABLE"],
-    linkopts = ["-lfiu"],
     deps = [
         "//include/client:include_client",
         "//src/client:curve_client",
@@ -344,5 +343,6 @@ cc_test(
         "//test/integration/cluster_common:integration_cluster_common",
         "//test/client/mock:client_mock_lib",
         "@com_google_absl//absl/memory",
+        "@libfiu",
     ]
 )

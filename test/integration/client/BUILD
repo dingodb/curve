@@ -24,8 +24,6 @@ cc_test(
     ),
     copts = CURVE_TEST_COPTS,
     defines = ["FIU_ENABLE"],
-    linkopts = ["-lfiu",
-    ],
     visibility = ["//visibility:public"],
     deps = [
         "//external:braft",
@@ -42,6 +40,7 @@ cc_test(
         "//test/integration/cluster_common:integration_cluster_common",
         "@com_google_googletest//:gtest",
         "@com_google_googletest//:gtest_main",
+        "@libfiu",
     ],
 )
 
@@ -55,8 +54,6 @@ cc_test(
     ),
     copts = CURVE_TEST_COPTS,
     defines = ["FIU_ENABLE"],
-    linkopts = ["-lfiu",
-    ],
     visibility = ["//visibility:public"],
     deps = [
         "//external:braft",
@@ -73,6 +70,7 @@ cc_test(
         "//test/integration/cluster_common:integration_cluster_common",
         "@com_google_googletest//:gtest",
         "@com_google_googletest//:gtest_main",
+        "@libfiu",
     ],
 )
 
@@ -85,8 +83,6 @@ cc_test(
     ),
     copts = CURVE_TEST_COPTS,
     defines = ["FIU_ENABLE"],
-    linkopts = ["-lfiu",
-    ],
     visibility = ["//visibility:public"],
     deps = [
         "//external:braft",
@@ -103,5 +99,6 @@ cc_test(
         "//test/integration/cluster_common:integration_cluster_common",
         "@com_google_googletest//:gtest",
         "@com_google_googletest//:gtest_main",
+        "@libfiu",
     ],
 )

@@ -101,10 +101,10 @@ cc_test(
                 "//external:gtest",
                 "//test/integration/cluster_common:integration_cluster_common",
                 "//src/snapshotcloneserver:snapshot_server_lib",
+                "@libfiu",
                 ],
         copts = CURVE_TEST_COPTS,
         defines = ["UNIT_TEST", "FIU_ENABLE"],
-        linkopts = ["-lfiu"],
         )
 
 

@@ -203,6 +203,12 @@ new_local_repository(
     path = "thirdparties/memcache/libmemcached-1.1.2",
 )
 
+new_local_repository(
+    name = "libfiu",
+    build_file = "//:thirdparties/libfiu/libfiu.BUILD",
+    path = "thirdparties/libfiu/libfiu",
+)
+
 http_archive(
     name = "aws",
     urls = ["https://github.com/aws/aws-sdk-cpp/archive/1.7.340.tar.gz"],

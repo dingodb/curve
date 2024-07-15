@@ -27,6 +27,7 @@ cc_library(
         "//external:glog",
         "//src/kvstorageclient:kvstorage_client",
         "//src/mds/nameserver2/helper",
+        "@libfiu",
     ],
 )
 
@@ -36,12 +37,12 @@ cc_library(
     hdrs = ["leader_election.h"],
     copts = CURVE_TEST_COPTS,
     defines = ["FIU_ENABLE"],
-    linkopts = ["-lfiu"],
     visibility = ["//visibility:public"],
     deps = [
         "//external:gflags",
         "//external:glog",
         "//src/common:curve_common",
         "//src/kvstorageclient:kvstorage_client",
+        "@libfiu",
     ],
 )

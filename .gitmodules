@@ -7,3 +7,6 @@
 [submodule "thirdparties/memcache/libmemcached-1.1.2"]
 	path = thirdparties/memcache/libmemcached-1.1.2
 	url = https://github.com/awesomized/libmemcached
+[submodule "thirdparties/libfiu/libfiu"]
+	path = thirdparties/libfiu/libfiu
+	url = https://github.com/albertito/libfiu

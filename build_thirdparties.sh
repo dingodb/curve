@@ -29,13 +29,24 @@ then
 fi
 cd ${dir}
 
-# # compile libmemcached manual
+# compile libmemcached manual
 cd ${dir}/thirdparties/memcache
 make clean
 make all
 if [ $? -ne 0 ]
 then
     echo "make libmemcached failed"
+    exit
+fi
+cd ${dir}
+
+# compile libfiu manual
+cd ${dir}/thirdparties/libfiu
+make clean
+make all
+if [ $? -ne 0 ]
+then
+    echo "make libfiu failed"
     exit
 fi
 cd ${dir}
