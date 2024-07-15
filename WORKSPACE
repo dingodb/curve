@@ -31,16 +31,23 @@ http_archive(
 load("@bazel_skylib//:workspace.bzl", "bazel_skylib_workspace")
 bazel_skylib_workspace()
 
-git_repository(
+# git_repository(
+#     name = "com_github_baidu_braft",
+#     remote = "https://github.com/baidu/braft",
+#     commit = "d12de388c97998f5ccd5cb97ed0da728815ef438",
+#     patches = [
+#         "//:thirdparties/braft/0001-fix-change-set_error-to-set_errorv.patch",
+#     ],
+#     patch_args = [
+#         "-p1"
+#     ],
+# )
+local_repository(
     name = "com_github_baidu_braft",
-    remote = "https://github.com/baidu/braft",
-    commit = "d12de388c97998f5ccd5cb97ed0da728815ef438",
-    patches = [
-        "//:thirdparties/braft/0001-fix-change-set_error-to-set_errorv.patch",
-    ],
-    patch_args = [
-        "-p1"
-    ],
+    path = "thirdparties/braft/braft",
+    repo_mapping = {
+        "@zlib": "@com_github_madler_zlib",
+    },
 )
 
 bind(
@@ -73,6 +80,9 @@ http_archive(
         "https://downloads.sourceforge.net/project/libpng/zlib/1.2.11/zlib-1.2.11.tar.gz",
         "https://zlib.net/fossils/zlib-1.2.11.tar.gz",
     ],
+    repo_mapping = {
+        "@com_github_madler_zlib": "@zlib",
+    },
 )
 
 bind(

@@ -13,3 +13,6 @@
 [submodule "thirdparties/brpc/brpc"]
 	path = thirdparties/brpc/brpc
 	url = https://github.com/dingodb/brpc
+[submodule "thirdparties/braft/braft"]
+	path = thirdparties/braft/braft
+	url = https://github.com/dingodb/braft
