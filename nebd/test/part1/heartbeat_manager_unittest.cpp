@@ -46,7 +46,7 @@ class HeartbeatManagerTest : public testing::Test {
                                     brpc::SERVER_DOESNT_OWN_SERVICE);
         ASSERT_EQ(0, ret) << "AddService heartbeat falied";
 
-        ret = server.StartAtSockFile(kHeartBeatSockFile, nullptr);
+        ret = server.Start(kHeartBeatSockFile, nullptr);
         ASSERT_EQ(0, ret) << "Start Server failed";
 
         option.intervalS = 1;

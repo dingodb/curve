@@ -21,6 +21,7 @@
  */
 #include <glog/logging.h>
 #include <gflags/gflags.h>
+#include <csignal>
 
 #include "src/mds/server/mds.h"
 #include "src/mds/common/mds_define.h"

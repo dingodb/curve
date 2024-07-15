@@ -23,6 +23,7 @@
 #ifndef CURVEFS_SRC_METASERVER_STORAGE_DUMPFILE_H_
 #define CURVEFS_SRC_METASERVER_STORAGE_DUMPFILE_H_
 
+#include <bits/types/siginfo_t.h>
 #include <cstdint>
 #include <memory>
 #include <string>

@@ -10,3 +10,6 @@
 [submodule "thirdparties/libfiu/libfiu"]
 	path = thirdparties/libfiu/libfiu
 	url = https://github.com/albertito/libfiu
+[submodule "thirdparties/brpc/brpc"]
+	path = thirdparties/brpc/brpc
+	url = https://github.com/dingodb/brpc

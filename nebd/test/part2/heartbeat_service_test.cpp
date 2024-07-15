@@ -52,7 +52,7 @@ TEST_F(HeartbeatServiceTest, KeepAlive) {
                         brpc::SERVER_DOESNT_OWN_SERVICE));
     brpc::ServerOptions option;
     option.idle_timeout_sec = -1;
-    ASSERT_EQ(0, server.StartAtSockFile(kSockFile_.c_str(), &option));
+    ASSERT_EQ(0, server.Start(kSockFile_.c_str(), &option));
 
     nebd::client::HeartbeatRequest request;
     request.set_pid(12345);
@@ -64,7 +64,7 @@ TEST_F(HeartbeatServiceTest, KeepAlive) {
         info->set_name("/test/file" + std::to_string(i));
     }
     brpc::Channel channel;
-    ASSERT_EQ(0, channel.InitWithSockFile(kSockFile_.c_str(), nullptr));
+    ASSERT_EQ(0, channel.Init(kSockFile_.c_str(), nullptr));
     nebd::client::NebdHeartbeatService_Stub stub(&channel);
     brpc::Controller cntl;
 

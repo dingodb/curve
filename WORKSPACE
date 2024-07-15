@@ -52,28 +52,62 @@ bind(
 # depend on @com_google_protobuf for protoc and proto runtimes.
 # This statement defines the @com_google_protobuf repo.
 
-# zlib
+# # zlib
+# http_archive(
+#     # name = "net_zlib",
+#     name = "com_github_madler_zlib",
+#     build_file = "@com_google_protobuf//:third_party/zlib.BUILD",
+#     sha256 = "9a93b2b7dfdac77ceba5a558a580e74667dd6fede4585b91eefb60f03b72df23",
+#     strip_prefix = "zlib-1.3.1",
+#     urls = ["https://zlib.net/zlib-1.3.1.tar.gz"],
+# )
+
+# TODO: SIMD optimization.
+# https://github.com/cloudflare/zlib
 http_archive(
-    name = "net_zlib",
-    build_file = "@com_google_protobuf//:third_party/zlib.BUILD",
+    name = "com_github_madler_zlib",  # 2017-01-15T17:57:23Z
+    build_file = "//bazel/third_party/zlib:zlib.BUILD",
     sha256 = "c3e5e9fdd5004dcb542feda5ee4f0ff0744628baf8ed2dd5d66f8ca1197cb1a1",
     strip_prefix = "zlib-1.2.11",
-    urls = ["https://zlib.net/zlib-1.2.11.tar.gz"],
+    urls = [
+        "https://downloads.sourceforge.net/project/libpng/zlib/1.2.11/zlib-1.2.11.tar.gz",
+        "https://zlib.net/fossils/zlib-1.2.11.tar.gz",
+    ],
 )
 
 bind(
     name = "zlib",
-    actual = "@net_zlib//:zlib",
+    actual = "@com_github_madler_zlib//:zlib",
 )
 
+# http_archive(
+#     name = "com_google_protobuf",
+#     strip_prefix = "protobuf-3.6.1.3",
+#     patch_args = ["-p1"],
+#     patches = ["//:thirdparties/protobuf/protobuf.patch"],
+#     sha256 = "9510dd2afc29e7245e9e884336f848c8a6600a14ae726adb6befdb4f786f0be2",
+#     urls = ["https://github.com/google/protobuf/archive/v3.6.1.3.zip"],
+# )
+
 http_archive(
-    name = "com_google_protobuf",
-    strip_prefix = "protobuf-3.6.1.3",
-    patch_args = ["-p1"],
-    patches = ["//:thirdparties/protobuf/protobuf.patch"],
-    sha256 = "9510dd2afc29e7245e9e884336f848c8a6600a14ae726adb6befdb4f786f0be2",
-    urls = ["https://github.com/google/protobuf/archive/v3.6.1.3.zip"],
+    name = "com_google_protobuf",  # 2021-10-29T00:04:02Z
+    build_file = "//bazel/third_party/protobuf:protobuf.BUILD",
+    patch_cmds = [
+        "sed -i protobuf.bzl -re '4,4d;417,508d'",
+    ],
+    patch_cmds_win = [
+        """$content = Get-Content 'protobuf.bzl' | Where-Object {
+    -not ($_.ReadCount -ne 4) -and
+    -not ($_.ReadCount -ge 418 -and $_.ReadCount -le 509)
+}
+Set-Content protobuf.bzl -Value $content -Encoding UTF8
+""",
+    ],
+    sha256 = "87407cd28e7a9c95d9f61a098a53cf031109d451a7763e7dd1253abf8b4df422",
+    strip_prefix = "protobuf-3.19.1",
+    urls = ["https://github.com/protocolbuffers/protobuf/archive/refs/tags/v3.19.1.tar.gz"],
 )
+
 
 bind(
     name = "protobuf",
@@ -123,11 +157,39 @@ bind(
     actual = "@com_github_gflags_gflags//:gflags",
 )
 
+# http_archive(
+#     name = "com_github_google_leveldb",
+#     build_file = "@com_github_brpc_brpc//:leveldb.BUILD",
+#     strip_prefix = "leveldb-a53934a3ae1244679f812d998a4f16f2c7f309a6",
+#     urls = ["https://github.com/google/leveldb/archive/a53934a3ae1244679f812d998a4f16f2c7f309a6.tar.gz"],
+# )
 http_archive(
-    name = "com_github_google_leveldb",
-    build_file = "@com_github_brpc_brpc//:leveldb.BUILD",
-    strip_prefix = "leveldb-a53934a3ae1244679f812d998a4f16f2c7f309a6",
-    urls = ["https://github.com/google/leveldb/archive/a53934a3ae1244679f812d998a4f16f2c7f309a6.tar.gz"],
+    name = "com_github_google_leveldb",  # 2021-02-23T21:51:12Z
+    build_file = "//bazel/third_party/leveldb:leveldb.BUILD",
+    sha256 = "9a37f8a6174f09bd622bc723b55881dc541cd50747cbd08831c2a82d620f6d76",
+    strip_prefix = "leveldb-1.23",
+    urls = [
+        "https://github.com/google/leveldb/archive/refs/tags/1.23.tar.gz",
+    ],
+)
+
+http_archive(
+    name = "com_github_google_snappy",  # 2017-08-25
+    build_file = "//bazel/third_party/snappy:snappy.BUILD",
+    sha256 = "3dfa02e873ff51a11ee02b9ca391807f0c8ea0529a4924afa645fbf97163f9d4",
+    strip_prefix = "snappy-1.1.7",
+    urls = [
+        "https://storage.googleapis.com/mirror.tensorflow.org/github.com/google/snappy/archive/1.1.7.tar.gz",
+        "https://github.com/google/snappy/archive/1.1.7.tar.gz",
+    ],
+)
+
+http_archive(
+    name = "com_github_google_crc32c",  # 2021-10-05T19:47:30Z
+    build_file = "//bazel/third_party/crc32c:crc32c.BUILD",
+    sha256 = "ac07840513072b7fcebda6e821068aa04889018f24e10e46181068fb214d7e56",
+    strip_prefix = "crc32c-1.1.2",
+    urls = ["https://github.com/google/crc32c/archive/1.1.2.tar.gz"],
 )
 
 bind(
@@ -135,27 +197,54 @@ bind(
     actual = "@com_github_google_leveldb//:leveldb",
 )
 
-git_repository(
-    name = "com_github_brpc_brpc",
-    remote = "https://github.com/apache/brpc",
-    commit = "1b9e00641cbec1c8803da6a1f7f555398c954cb0",
-    patches = [
-        "//:thirdparties/brpc/brpc.patch",
-        "//:thirdparties/brpc/fix-gcc11.patch",
-        "//:thirdparties/brpc/0001-bvar-warning-on-conflict-bvar-name.patch",
-        "//:thirdparties/brpc/0002-Support-fork-without-exec.patch",
-        "//:thirdparties/brpc/0003-Add-docs-on-fork-w-o-exec.patch",
-        "//:thirdparties/brpc/0004-not-register-pthread_atfork-in-child-process.patch",
-        "//:thirdparties/brpc/0005-Fix-LatencyRecorder-qps-not-accurate.patch",
-        "//:thirdparties/brpc/0006-fix-1973-1863.patch",
-    ],
-    patch_args = ["-p1"],
+new_local_repository(
+    name = "openssl",
+    path = "/usr",
+    build_file = "//:openssl.BUILD",
 )
 
 # git_repository(
 #     name = "com_github_brpc_brpc",
 #     remote = "https://github.com/apache/brpc",
-#     commit = "2e183187bcbccc39c7da8dde2a98d02a7a031279",
+#     commit = "1b9e00641cbec1c8803da6a1f7f555398c954cb0",
+#     patches = [
+#         "//:thirdparties/brpc/brpc.patch",
+#         "//:thirdparties/brpc/fix-gcc11.patch",
+#         "//:thirdparties/brpc/0001-bvar-warning-on-conflict-bvar-name.patch",
+#         "//:thirdparties/brpc/0002-Support-fork-without-exec.patch",
+#         "//:thirdparties/brpc/0003-Add-docs-on-fork-w-o-exec.patch",
+#         "//:thirdparties/brpc/0004-not-register-pthread_atfork-in-child-process.patch",
+#         "//:thirdparties/brpc/0005-Fix-LatencyRecorder-qps-not-accurate.patch",
+#         "//:thirdparties/brpc/0006-fix-1973-1863.patch",
+#     ],
+#     patch_args = ["-p1"],
+# )
+
+# git_repository(
+#     name = "com_github_brpc_brpc",
+#     remote = "https://github.com/apache/brpc",
+#     commit = "9d23af8e92f04a6609a5a2bc840b531d0eb22c5c",
+# )
+
+local_repository(
+    name = "com_github_brpc_brpc",
+    path = "thirdparties/brpc/brpc",
+)
+
+bind(
+    name = "ssl",
+    actual = "@openssl//:ssl"
+)
+
+bind(
+    name = "ssl_macos",
+    actual = "@openssl_macos//:ssl"
+)
+
+# new_local_repository(
+#     name = "zlib",
+#     build_file = "//:zlib.BUILD",
+#     path = "/usr",
 # )
 
 bind(

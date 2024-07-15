@@ -239,7 +239,7 @@ MetaStatusCode MetaServerClientImpl::ListDentry(uint32_t fsId, uint64_t inodeid,
                          << ", errmsg = " << MetaStatusCode_Name(ret);
         } else {
             auto dentrys = response.dentrys();
-            for_each(dentrys.begin(), dentrys.end(),
+            std::for_each(dentrys.begin(), dentrys.end(),
                         [&](Dentry &d) { dentryList->push_back(d); });
         }
 

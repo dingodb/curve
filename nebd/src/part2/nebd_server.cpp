@@ -244,7 +244,7 @@ bool NebdServer::StartServer() {
         LOG(ERROR) << "Address already in use";
         return -1;
     }
-    int startBrpcServerRes = server_.StartAtSockFile(
+    int startBrpcServerRes = server_.Start(
                                     listenAddress_.c_str(), &option);
     if (0 != startBrpcServerRes) {
         LOG(ERROR) << "NebdServer start brpc server fail, res="
