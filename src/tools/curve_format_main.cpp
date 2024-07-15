@@ -107,7 +107,7 @@ using curve::chunkserver::FilePoolMeta;
 
 class CompareInternal {
  public:
-    bool operator()(const std::string& s1, const std::string& s2) {
+    bool operator()(const std::string& s1, const std::string& s2) const {
         auto index1 = std::atoi(s1.c_str());
         auto index2 = std::atoi(s2.c_str());
         return index1 < index2;

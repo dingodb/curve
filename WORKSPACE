@@ -179,16 +179,15 @@ bind(
 )
 
 # jsoncpp
-new_git_repository(
-    name = "jsoncpp",
-    build_file = "//:thirdparties/jsoncpp.BUILD",
-    remote = "https://github.com/open-source-parsers/jsoncpp.git",
-    tag = "1.8.4",
+http_archive(
+  name = "jsoncpp",
+  urls = ["https://github.com/open-source-parsers/jsoncpp/archive/refs/tags/1.9.5.tar.gz"],
+  strip_prefix = "jsoncpp-1.9.5",
 )
 
 bind(
     name = "json",
-    actual = "@jsoncpp//:json",
+    actual = "@jsoncpp//:jsoncpp",
 )
 
 new_local_repository(

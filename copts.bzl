@@ -40,7 +40,7 @@ BASE_FLAGS = [
 ]
 
 CXX_FLAGS = [
-    "-std=c++11",
+    "-std=c++17",
 ]
 
 CURVE_GCC_FLAGS = [
