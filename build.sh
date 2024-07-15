@@ -139,9 +139,9 @@ cp ${dir}/thirdparties/etcdclient/libetcdclient.h ${dir}/include/etcdclient/etcd
 
 if [ `gcc -dumpversion | awk -F'.' '{print $1}'` -le 6 ]
 then
-    bazelflags='--jobs=${BAZEL_JOBS}'
+    bazelflags="--jobs=${BAZEL_JOBS}"
 else
-    bazelflags='--copt -faligned-new --jobs=${BAZEL_JOBS}'
+    bazelflags="--copt -faligned-new --jobs=${BAZEL_JOBS}"
 fi
 
 if [ "$1" = "debug" ]
