@@ -27,7 +27,7 @@ cc_library(
     defines = ["UNIT_TEST"],
     visibility = ["//visibility:public"],
     deps = [
-        "//external:gtest",
+        "@gtest//:gtest",
          "//curvefs/src/client:fuse_client_lib",
         "//curvefs/proto:metaserver_cc_proto",
         "//curvefs/proto:mds_cc_proto",
@@ -68,7 +68,7 @@ cc_test(
     defines = ["UNIT_TEST"],
     visibility = ["//visibility:public"],
     deps = [
-        "//external:gtest",
+        "@gtest//:gtest",
          "//curvefs/src/client:fuse_client_lib",
         "//curvefs/proto:metaserver_cc_proto",
         "//curvefs/proto:mds_cc_proto",
@@ -100,8 +100,7 @@ cc_test(
    ),
    copts = CURVE_TEST_COPTS + ["-I/usr/local/include/fuse3"],
    deps = [
-        "//external:gtest",
-        "@com_google_googletest//:gtest_main",
+        "@gtest//:gtest",
         "//include/client:include_client",
         "//curvefs/src/client:fuse_client_lib",
         "//test/client/mock:client_mock_lib",
@@ -124,7 +123,7 @@ cc_library(
     ]),
     deps = [
         "//curvefs/src/client:fuse_client_lib",
-        "@com_google_googletest//:gtest",
+        "@gtest//:gtest",
     ],
     copts = CURVE_TEST_COPTS,
     visibility = ["//visibility:public"],
@@ -138,11 +137,11 @@ cc_test(
     deps = [
         "//curvefs/src/client/kvclient:memcached_client_lib",
         "@com_google_absl//absl/strings",
-        "@com_google_googletest//:gtest_main",
-        "//external:gtest",
-        "//external:glog",
+        "@gtest//:gtest",
+        "@glog//:glog",
+        "@libmemcached//:memcache"
     ],
-    linkopts = ["-lmemcached"],
+    # linkopts = ["-lmemcached"],
     copts = CURVE_TEST_COPTS,
     visibility = ["//visibility:public"],
 )
@@ -158,7 +157,7 @@ cc_test(
     defines = ["UNIT_TEST"],
     visibility = ["//visibility:public"],
     deps = [
-        "//external:gtest",
+        "@gtest//:gtest",
          "//curvefs/src/client:fuse_client_lib",
         "//curvefs/proto:metaserver_cc_proto",
         "//curvefs/proto:mds_cc_proto",

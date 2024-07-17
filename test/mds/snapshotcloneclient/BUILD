@@ -21,9 +21,9 @@ cc_test(
     srcs = glob(["*.cpp", "*.h"]),
     copts = CURVE_TEST_COPTS,
     deps = [
-        "//external:gtest",
+        "@gtest//:gtest",
+        "@libfiu//:libfiu",
         "//src/mds/snapshotcloneclient:snapshotcloneclient",
         "//test/mds/mock:common_mock",
-        "@com_google_googletest//:gtest_main",
     ],
 )

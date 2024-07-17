@@ -23,7 +23,7 @@ cc_test(
         ],
         ),
         deps = ["//src/common/concurrent:curve_concurrent", 
-                "//external:gtest",
+                "@gtest//:gtest",
                 "//src/snapshotcloneserver:snapshot_server_lib",
                 "//test/util:test_util", 
                 ],

@@ -23,15 +23,14 @@ cc_test(
         "common.cpp",
         "heartbeat_basic_test.cpp"]),
     deps = [
+        "@brpc//:brpc",
+        "@gtest//:gtest",
         "//src/mds/heartbeat:heartbeat",
         "//src/mds/nameserver2:nameserver2",
         "//src/common:curve_common",
         "//src/mds/topology:topology",
         "//src/mds/schedule",
         "//test/mds/mock:common_mock",
-        "@com_google_googletest//:gtest_main",
-        "@com_google_googletest//:gtest",
-        "//external:brpc"
     ],
     copts = CURVE_TEST_COPTS,
 )
@@ -43,15 +42,14 @@ cc_test(
         "common.cpp",
         "heartbeat_exception_test.cpp"]),
     deps = [
+        "@brpc//:brpc",
+        "@gtest//:gtest",
         "//src/mds/heartbeat:heartbeat",
         "//src/mds/nameserver2:nameserver2",
         "//src/common:curve_common",
         "//src/mds/topology:topology",
         "//src/mds/schedule",
         "//test/mds/mock:common_mock",
-        "@com_google_googletest//:gtest_main",
-        "@com_google_googletest//:gtest",
-        "//external:brpc"
     ],
     copts = CURVE_TEST_COPTS,
 )

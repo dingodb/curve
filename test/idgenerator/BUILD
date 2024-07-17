@@ -27,7 +27,6 @@ cc_test(
         "//src/idgenerator",
         "//src/mds/common:mds_common",
         "//test/mds/mock:common_mock",
-        "@com_google_googletest//:gtest",
-        "@com_google_googletest//:gtest_main",
+        "@gtest//:gtest"
     ],
 )

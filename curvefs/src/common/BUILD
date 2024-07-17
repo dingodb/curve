@@ -33,8 +33,8 @@ cc_library(
     copts = CURVE_DEFAULT_COPTS,
     visibility = ["//visibility:public"],
     deps = [
-        "//external:gflags",
-        "//external:glog",
+        "@gflags//:gflags",
+        "@glog//:glog",
         "//src/common:curve_common",
     ],
 )
@@ -47,8 +47,7 @@ cc_library(
     copts = CURVE_DEFAULT_COPTS,
     visibility = ["//visibility:public"],
     deps = [
-        "//external:butil",
-        "//external:bvar",
+        "@brpc//:brpc"
     ],
 )
 
@@ -63,9 +62,9 @@ cc_library(
     copts = CURVE_DEFAULT_COPTS,
     visibility = ["//visibility:public"],
     deps = [
-        "//external:brpc",
-        "//external:gflags",
-        "//external:glog",
+        "@brpc//:brpc",
+        "@gflags//:gflags",
+        "@glog//:glog",
     ],
 )
 
@@ -80,6 +79,6 @@ cc_library(
     copts = CURVE_DEFAULT_COPTS,
     visibility = ["//visibility:public"],
     deps = [
-        "//external:glog",
+        "@glog//:glog",
     ],
 )

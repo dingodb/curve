@@ -23,9 +23,8 @@ cc_test(
     deps = [
             "//src/mds/nameserver2:nameserver2",
             "//src/leader_election:leader_election",
-            "@com_google_googletest//:gtest_main",
-            "@com_google_googletest//:gtest",
-            "//external:brpc",
+            "@gtest//:gtest",
+            "@brpc//:brpc",
             "//src/common:curve_common",
             "//src/mds/topology:topology",
             "//src/mds/nameserver2/helper:helper",

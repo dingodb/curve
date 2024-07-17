@@ -29,37 +29,4 @@ then
 fi
 cd ${dir}
 
-# compile libmemcached manual
-cd ${dir}/thirdparties/memcache
-make clean
-make all
-if [ $? -ne 0 ]
-then
-    echo "make libmemcached failed"
-    exit
-fi
-cd ${dir}
-
-# compile libfiu manual
-cd ${dir}/thirdparties/libfiu
-make clean
-make all
-if [ $? -ne 0 ]
-then
-    echo "make libfiu failed"
-    exit
-fi
-cd ${dir}
-
-# compile rocksdb manual
-cd ${dir}/thirdparties/rocksdb
-make clean
-make all
-if [ $? -ne 0 ]
-then
-    echo "make rocksdb failed"
-    exit
-fi
-cd ${dir}
-
 echo "build thirdparties finished"

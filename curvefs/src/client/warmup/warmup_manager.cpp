@@ -23,6 +23,7 @@
 #include "curvefs/src/client/warmup/warmup_manager.h"
 
 #include <fmt/format.h>
+#include <fmt/ranges.h>
 #include <glog/logging.h>
 #include <unistd.h>
 

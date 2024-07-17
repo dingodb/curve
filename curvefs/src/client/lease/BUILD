@@ -27,8 +27,8 @@ cc_library(
         "//curvefs/src/client/rpcclient:rpcclient",
         "//curvefs/src/client/common:common",
         "//src/client:curve_client",
-        "//external:brpc",
-        "//external:gflags",
-        "//external:glog",
+        "@brpc//:brpc",
+        "@gflags//:gflags",
+        "@glog//:glog",
     ],
 )

@@ -24,7 +24,7 @@ cc_test(
     ]),
     copts = CURVE_TEST_COPTS,
     deps = [
-        "//external:gtest",
+        "@gtest//:gtest",
         "//curvefs/src/mds/topology:curvefs_topology",
         "//curvefs/test/mds/mock:curvefs_mds_mock",
     ],

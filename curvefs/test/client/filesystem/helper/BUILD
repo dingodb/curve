@@ -25,7 +25,6 @@ cc_library(
     deps = [
         "//curvefs/src/client:fuse_client_lib",
         "//curvefs/test/client:mock",
-        "@com_google_googletest//:gtest",
-        "@com_google_googletest//:gtest_main",
+        "@gtest//:gtest",
     ],
 )

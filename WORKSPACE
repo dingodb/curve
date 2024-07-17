@@ -31,361 +31,12 @@ http_archive(
 load("@bazel_skylib//:workspace.bzl", "bazel_skylib_workspace")
 bazel_skylib_workspace()
 
-# git_repository(
-#     name = "com_github_baidu_braft",
-#     remote = "https://github.com/baidu/braft",
-#     commit = "d12de388c97998f5ccd5cb97ed0da728815ef438",
-#     patches = [
-#         "//:thirdparties/braft/0001-fix-change-set_error-to-set_errorv.patch",
-#     ],
-#     patch_args = [
-#         "-p1"
-#     ],
-# )
-local_repository(
-    name = "com_github_baidu_braft",
-    path = "thirdparties/braft/braft",
-    repo_mapping = {
-        "@zlib": "@com_github_madler_zlib",
-    },
-)
-
-bind(
-    name = "braft",
-    actual = "@com_github_baidu_braft//:braft",
-)
-
-# proto_library, cc_proto_library, and java_proto_library rules implicitly
-# depend on @com_google_protobuf for protoc and proto runtimes.
-# This statement defines the @com_google_protobuf repo.
-
-# # zlib
-# http_archive(
-#     # name = "net_zlib",
-#     name = "com_github_madler_zlib",
-#     build_file = "@com_google_protobuf//:third_party/zlib.BUILD",
-#     sha256 = "9a93b2b7dfdac77ceba5a558a580e74667dd6fede4585b91eefb60f03b72df23",
-#     strip_prefix = "zlib-1.3.1",
-#     urls = ["https://zlib.net/zlib-1.3.1.tar.gz"],
-# )
-
-# TODO: SIMD optimization.
-# https://github.com/cloudflare/zlib
-http_archive(
-    name = "com_github_madler_zlib",  # 2017-01-15T17:57:23Z
-    build_file = "//bazel/third_party/zlib:zlib.BUILD",
-    sha256 = "c3e5e9fdd5004dcb542feda5ee4f0ff0744628baf8ed2dd5d66f8ca1197cb1a1",
-    strip_prefix = "zlib-1.2.11",
-    urls = [
-        "https://downloads.sourceforge.net/project/libpng/zlib/1.2.11/zlib-1.2.11.tar.gz",
-        "https://zlib.net/fossils/zlib-1.2.11.tar.gz",
-    ],
-    repo_mapping = {
-        "@com_github_madler_zlib": "@zlib",
-    },
-)
-
-bind(
-    name = "zlib",
-    actual = "@com_github_madler_zlib//:zlib",
-)
-
-# http_archive(
-#     name = "com_google_protobuf",
-#     strip_prefix = "protobuf-3.6.1.3",
-#     patch_args = ["-p1"],
-#     patches = ["//:thirdparties/protobuf/protobuf.patch"],
-#     sha256 = "9510dd2afc29e7245e9e884336f848c8a6600a14ae726adb6befdb4f786f0be2",
-#     urls = ["https://github.com/google/protobuf/archive/v3.6.1.3.zip"],
-# )
-
-http_archive(
-    name = "com_google_protobuf",  # 2021-10-29T00:04:02Z
-    build_file = "//bazel/third_party/protobuf:protobuf.BUILD",
-    patch_cmds = [
-        "sed -i protobuf.bzl -re '4,4d;417,508d'",
-    ],
-    patch_cmds_win = [
-        """$content = Get-Content 'protobuf.bzl' | Where-Object {
-    -not ($_.ReadCount -ne 4) -and
-    -not ($_.ReadCount -ge 418 -and $_.ReadCount -le 509)
-}
-Set-Content protobuf.bzl -Value $content -Encoding UTF8
-""",
-    ],
-    sha256 = "87407cd28e7a9c95d9f61a098a53cf031109d451a7763e7dd1253abf8b4df422",
-    strip_prefix = "protobuf-3.19.1",
-    urls = ["https://github.com/protocolbuffers/protobuf/archive/refs/tags/v3.19.1.tar.gz"],
-)
-
-
-bind(
-    name = "protobuf",
-    actual = "@com_google_protobuf//:protobuf",
-)
-
-#import the  gtest files.
-http_archive(
-    name = "com_google_googletest",
-    urls = [
-        "https://curve-build.nos-eastchina1.126.net/googletest-release-1.12.1.tar.gz",
-        "https://github.com/google/googletest/archive/refs/tags/release-1.12.1.tar.gz",
-    ],
-    sha256 = "81964fe578e9bd7c94dfdb09c8e4d6e6759e19967e397dbea48d1c10e45d0df2",
-    strip_prefix = "googletest-release-1.12.1",
-)
-
-bind(
-    name = "gtest",
-    actual = "@com_google_googletest//:gtest",
-)
-
-#Import the glog files.
-# brpc内BUILD文件在依赖glog时, 直接指定的依赖是"@com_github_google_glog//:glog"
-git_repository(
-    name = "com_github_google_glog",
-    remote = "https://github.com/google/glog",
-    commit = "4cc89c9e2b452db579397887c37f302fb28f6ca1",
-    patch_args = ["-p1"],
-    patches = ["//:thirdparties/glog/glog.patch"],
-)
-
-bind(
-    name = "glog",
-    actual = "@com_github_google_glog//:glog"
-)
-
-# glog depends on gflags-2.2.2
-http_archive(
-    name = "com_github_gflags_gflags",
-    strip_prefix = "gflags-2.2.2",
-    urls = ["https://github.com/gflags/gflags/archive/v2.2.2.tar.gz"],
-)
-
-bind(
-    name = "gflags",
-    actual = "@com_github_gflags_gflags//:gflags",
-)
-
-# http_archive(
-#     name = "com_github_google_leveldb",
-#     build_file = "@com_github_brpc_brpc//:leveldb.BUILD",
-#     strip_prefix = "leveldb-a53934a3ae1244679f812d998a4f16f2c7f309a6",
-#     urls = ["https://github.com/google/leveldb/archive/a53934a3ae1244679f812d998a4f16f2c7f309a6.tar.gz"],
-# )
-http_archive(
-    name = "com_github_google_leveldb",  # 2021-02-23T21:51:12Z
-    build_file = "//bazel/third_party/leveldb:leveldb.BUILD",
-    sha256 = "9a37f8a6174f09bd622bc723b55881dc541cd50747cbd08831c2a82d620f6d76",
-    strip_prefix = "leveldb-1.23",
-    urls = [
-        "https://github.com/google/leveldb/archive/refs/tags/1.23.tar.gz",
-    ],
-)
-
-http_archive(
-    name = "com_github_google_snappy",  # 2017-08-25
-    build_file = "//bazel/third_party/snappy:snappy.BUILD",
-    sha256 = "3dfa02e873ff51a11ee02b9ca391807f0c8ea0529a4924afa645fbf97163f9d4",
-    strip_prefix = "snappy-1.1.7",
-    urls = [
-        "https://storage.googleapis.com/mirror.tensorflow.org/github.com/google/snappy/archive/1.1.7.tar.gz",
-        "https://github.com/google/snappy/archive/1.1.7.tar.gz",
-    ],
-)
-
-http_archive(
-    name = "com_github_google_crc32c",  # 2021-10-05T19:47:30Z
-    build_file = "//bazel/third_party/crc32c:crc32c.BUILD",
-    sha256 = "ac07840513072b7fcebda6e821068aa04889018f24e10e46181068fb214d7e56",
-    strip_prefix = "crc32c-1.1.2",
-    urls = ["https://github.com/google/crc32c/archive/1.1.2.tar.gz"],
-)
-
-bind(
-    name = "leveldb",
-    actual = "@com_github_google_leveldb//:leveldb",
-)
-
-new_local_repository(
-    name = "openssl",
-    path = "/usr",
-    build_file = "//:openssl.BUILD",
-)
-
-# git_repository(
-#     name = "com_github_brpc_brpc",
-#     remote = "https://github.com/apache/brpc",
-#     commit = "1b9e00641cbec1c8803da6a1f7f555398c954cb0",
-#     patches = [
-#         "//:thirdparties/brpc/brpc.patch",
-#         "//:thirdparties/brpc/fix-gcc11.patch",
-#         "//:thirdparties/brpc/0001-bvar-warning-on-conflict-bvar-name.patch",
-#         "//:thirdparties/brpc/0002-Support-fork-without-exec.patch",
-#         "//:thirdparties/brpc/0003-Add-docs-on-fork-w-o-exec.patch",
-#         "//:thirdparties/brpc/0004-not-register-pthread_atfork-in-child-process.patch",
-#         "//:thirdparties/brpc/0005-Fix-LatencyRecorder-qps-not-accurate.patch",
-#         "//:thirdparties/brpc/0006-fix-1973-1863.patch",
-#     ],
-#     patch_args = ["-p1"],
-# )
-
-# git_repository(
-#     name = "com_github_brpc_brpc",
-#     remote = "https://github.com/apache/brpc",
-#     commit = "9d23af8e92f04a6609a5a2bc840b531d0eb22c5c",
-# )
-
-local_repository(
-    name = "com_github_brpc_brpc",
-    path = "thirdparties/brpc/brpc",
-)
-
-bind(
-    name = "ssl",
-    actual = "@openssl//:ssl"
-)
-
-bind(
-    name = "ssl_macos",
-    actual = "@openssl_macos//:ssl"
-)
-
-# new_local_repository(
-#     name = "zlib",
-#     build_file = "//:zlib.BUILD",
-#     path = "/usr",
-# )
-
-bind(
-    name = "brpc",
-    actual = "@com_github_brpc_brpc//:brpc",
-)
-
-bind(
-    name = "butil",
-    actual = "@com_github_brpc_brpc//:butil",
-)
-
-bind(
-    name = "bthread",
-    actual = "@com_github_brpc_brpc//:bthread",
-)
-
-bind(
-    name = "bvar",
-    actual = "@com_github_brpc_brpc//:bvar",
-)
-
-# jsoncpp
-http_archive(
-  name = "jsoncpp",
-  urls = ["https://github.com/open-source-parsers/jsoncpp/archive/refs/tags/1.9.5.tar.gz"],
-  strip_prefix = "jsoncpp-1.9.5",
-)
-
-bind(
-    name = "json",
-    actual = "@jsoncpp//:jsoncpp",
-)
-
-new_local_repository(
-    name = "etcdclient",
-    build_file = "//:thirdparties/etcdclient.BUILD",
-    path = "thirdparties/etcdclient",
-)
-
-new_local_repository(
-    name = "libmemcached",
-    build_file = "//:thirdparties/memcache/memcache.BUILD",
-    path = "thirdparties/memcache/libmemcached-1.1.2",
-)
-
-new_local_repository(
-    name = "libfiu",
-    build_file = "//:thirdparties/libfiu/libfiu.BUILD",
-    path = "thirdparties/libfiu/libfiu",
-)
-
-http_archive(
-    name = "aws",
-    urls = ["https://github.com/aws/aws-sdk-cpp/archive/1.7.340.tar.gz"],
-    sha256 = "2e82517045efb55409cff1408c12829d9e8aea22c1e2888529cb769b7473b0bf",
-    strip_prefix = "aws-sdk-cpp-1.7.340",
-    build_file = "//:thirdparties/aws/aws.BUILD",
-)
-
-http_archive(
-    name = "aws_c_common",
-    urls = ["https://github.com/awslabs/aws-c-common/archive/v0.4.29.tar.gz"],
-    sha256 = "01c2a58553a37b3aa5914d9e0bf7bf14507ff4937bc5872a678892ca20fcae1f",
-    strip_prefix = "aws-c-common-0.4.29",
-    build_file = "//:thirdparties/aws/aws-c-common.BUILD",
-)
-
-http_archive(
-    name = "aws_c_event_stream",
-    urls = ["https://github.com/awslabs/aws-c-event-stream/archive/v0.1.4.tar.gz"],
-    sha256 = "31d880d1c868d3f3df1e1f4b45e56ac73724a4dc3449d04d47fc0746f6f077b6",
-    strip_prefix = "aws-c-event-stream-0.1.4",
-    build_file = "//:thirdparties/aws/aws-c-event-stream.BUILD",
-)
-
-http_archive(
-    name = "aws_checksums",
-    urls = ["https://github.com/awslabs/aws-checksums/archive/v0.1.5.tar.gz"],
-    sha256 = "6e6bed6f75cf54006b6bafb01b3b96df19605572131a2260fddaf0e87949ced0",
-    strip_prefix = "aws-checksums-0.1.5",
-    build_file = "//:thirdparties/aws/aws-checksums.BUILD",
-)
-
 # C++ rules for Bazel.
 http_archive(
     name = "rules_cc",
     urls = ["https://github.com/bazelbuild/rules_cc/archive/9e10b8a6db775b1ecd358d8ddd3dab379a2c29a5.zip"],
     strip_prefix = "rules_cc-9e10b8a6db775b1ecd358d8ddd3dab379a2c29a5",
     sha256 = "954b7a3efc8752da957ae193a13b9133da227bdacf5ceb111f2e11264f7e8c95",
-)
-
-# abseil-cpp
-http_archive(
-  name = "com_google_absl",
-  urls = ["https://github.com/abseil/abseil-cpp/archive/refs/tags/20210324.2.tar.gz"],
-  strip_prefix = "abseil-cpp-20210324.2",
-  sha256 = "59b862f50e710277f8ede96f083a5bb8d7c9595376146838b9580be90374ee1f",
-)
-
-# fmt
-http_archive(
-  name = "fmt",
-  url = "https://github.com/fmtlib/fmt/archive/9.1.0.tar.gz",
-  sha256 = "5dea48d1fcddc3ec571ce2058e13910a0d4a6bab4cc09a809d8b1dd1c88ae6f2",
-  strip_prefix = "fmt-9.1.0",
-  build_file = "//:thirdparties/fmt.BUILD",
-)
-
-# spdlog
-http_archive(
-  name = "spdlog",
-  urls = ["https://github.com/gabime/spdlog/archive/refs/tags/v1.11.0.tar.gz"],
-  strip_prefix = "spdlog-1.11.0",
-  sha256 = "ca5cae8d6cac15dae0ec63b21d6ad3530070650f68076f3a4a862ca293a858bb",
-  build_file = "//:thirdparties/spdlog.BUILD",
-)
-
-# incbin
-new_git_repository(
-    name = "incbin",
-    remote = "https://github.com/graphitemaster/incbin.git",
-    commit = "6e576cae5ab5810f25e2631f2e0b80cbe7dc8cbf",
-    build_file = "//:thirdparties/incbin.BUILD",
-)
-
-# config
-new_local_repository(
-    name = "config",
-    build_file = "//:thirdparties/config.BUILD",
-    path = "thirdparties/config",
 )
 
 # Bazel platform rules.
@@ -396,11 +47,18 @@ http_archive(
     urls = ["https://github.com/bazelbuild/platforms/archive/98939346da932eef0b54cf808622f5bb0928f00b.zip"],
 )
 
-# RocksDB
+# abseil-cpp
+http_archive(
+  name = "com_google_absl",
+  urls = ["https://github.com/abseil/abseil-cpp/archive/refs/tags/20210324.2.tar.gz"],
+  strip_prefix = "abseil-cpp-20210324.2",
+  sha256 = "59b862f50e710277f8ede96f083a5bb8d7c9595376146838b9580be90374ee1f",
+)
+
 new_local_repository(
-    name = "rocksdb",
-    build_file = "//:thirdparties/rocksdb.BUILD",
-    path = "thirdparties/rocksdb",
+    name = "etcdclient",
+    build_file = "//:thirdparties/etcdclient.BUILD",
+    path = "thirdparties/etcdclient",
 )
 
 # jni
@@ -408,6 +66,147 @@ new_local_repository(
     name = "jni",
     build_file = "//:thirdparties/jni.BUILD",
     path = "thirdparties",
+)
+
+new_local_repository(
+    name = "braft",
+    path = "third-party/installed",
+    build_file = "//bazel:braft.BUILD",
+)
+
+new_local_repository(
+    name = "brpc",
+    path = "third-party/installed",
+    build_file = "//bazel:brpc.BUILD",
+)
+
+new_local_repository(
+    name = "zlib",
+    path = "third-party/installed",
+    build_file = "//bazel:zlib.BUILD",
+)
+
+new_local_repository(
+    name = "protobuf",
+    path = "third-party/installed",
+    build_file = "//bazel:protobuf.BUILD",
+)
+
+new_local_repository(
+    name = "gtest",
+    path = "third-party/installed",
+    build_file = "//bazel:gtest.BUILD",
+)
+
+new_local_repository(
+    name = "gflags",
+    path = "third-party/installed",
+    build_file = "//bazel:gflags.BUILD",
+)
+
+new_local_repository(
+    name = "glog",
+    path = "third-party/installed",
+    build_file = "//bazel:glog.BUILD",
+)
+
+new_local_repository(
+    name = "leveldb",
+    path = "third-party/installed",
+    build_file = "//bazel:leveldb.BUILD",
+)
+
+new_local_repository(
+    name = "snappy",
+    path = "third-party/installed",
+    build_file = "//bazel:snappy.BUILD",
+)
+
+new_local_repository(
+    name = "crc32c",
+    path = "third-party/installed",
+    build_file = "//bazel:crc32c.BUILD",
+)
+
+new_local_repository(
+    name = "openssl",
+    path = "third-party/installed",
+    build_file = "//bazel:openssl.BUILD",
+)
+
+new_local_repository(
+    name = "jsoncpp",
+    path = "third-party/installed",
+    build_file = "//bazel:jsoncpp.BUILD",
+)
+
+
+new_local_repository(
+    name = "libmemcached",
+    path = "third-party/installed",
+    build_file = "//bazel:memcache.BUILD",
+)
+
+new_local_repository(
+    name = "libfiu",
+    path = "third-party/installed",
+    build_file = "//bazel:libfiu.BUILD",
+)
+
+new_local_repository(
+    name = "aws",
+    path = "third-party/installed",
+    build_file = "//bazel:aws.BUILD",
+)
+
+new_local_repository(
+    name = "fmt",
+    path = "third-party/installed",
+    build_file = "//bazel:fmt.BUILD",
+)
+
+new_local_repository(
+    name = "spdlog",
+    path = "third-party/installed",
+    build_file = "//bazel:spdlog.BUILD",
+)
+
+
+new_local_repository(
+    name = "incbin",
+    path = "third-party/installed",
+    build_file = "//bazel:incbin.BUILD",
+)
+
+
+new_local_repository(
+    name = "rocksdb",
+    path = "third-party/installed",
+    build_file = "//bazel:rocksdb.BUILD",
+)
+
+new_local_repository(
+    name = "curl",
+    path = "third-party/installed",
+    build_file = "//bazel:curl.BUILD",
+)
+
+new_local_repository(
+    name = "uuid",
+    path = "third-party/installed",
+    build_file = "//bazel:uuid.BUILD",
+)
+
+new_local_repository(
+    name = "third-party-headers",
+    path = "third-party/installed/include",
+    build_file = "//bazel:headers.BUILD",
+)
+
+new_local_repository(
+    name = "proto_compiler",
+    path = "third-party/protobuf/src/google/protobuf/compiler",
+    build_file = "//bazel:protoc.BUILD",
 )
 
 # Hedron's Compile Commands Extractor for Bazel

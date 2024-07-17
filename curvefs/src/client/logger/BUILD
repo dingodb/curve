@@ -23,7 +23,7 @@ cc_library(
     copts = CURVE_DEFAULT_COPTS,
     visibility = ["//visibility:public"],
     deps = [
-        "//external:glog",
+        "@glog//:glog",
         "@spdlog//:spdlog",
         "@com_google_absl//absl/strings:str_format",
         "//curvefs/src/common:dynamic_vlog",

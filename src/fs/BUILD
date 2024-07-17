@@ -27,8 +27,8 @@ cc_library(
     hdrs = ["local_filesystem.h","fs_common.h"],
     deps = [
                 "//src/common:curve_common",
-                "//external:glog",
-                "//external:butil",
+                "@glog//:glog",
+                "@brpc//:brpc",
             ],
     visibility = ["//visibility:public"],
     copts = CURVE_DEFAULT_COPTS,

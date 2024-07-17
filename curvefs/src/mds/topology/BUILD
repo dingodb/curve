@@ -30,12 +30,12 @@ cc_library(
         "//curvefs/src/mds/common:fs_mds_common",
         "//curvefs/src/mds/metaserverclient:curvefs_mds_metaserverclient",
         "//curvefs/src/mds/topology:curvefs_deal_peerid",
-        "//external:brpc",
-        "//external:glog",
-        "//external:json",
         "//src/common:curve_common",
         "//src/common/concurrent:curve_concurrent",
         "//src/kvstorageclient:kvstorage_client",
+        "@brpc//:brpc",
+        "@glog//:glog",
+        "@jsoncpp//:jsoncpp",
     ],
 )
 

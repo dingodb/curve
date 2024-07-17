@@ -24,10 +24,9 @@ cc_binary(
     defines = ["FIU_ENABLE"],
     visibility = ["//visibility:public"],
     deps = [
-        "@com_google_googletest//:gtest",
-        "@com_google_googletest//:gtest_main",
+        "@gtest//:gtest",
+        "@libfiu//:libfiu",
         "//src/mds/server:mds_for_test",
         "//test/mds/mock:common_mock",
-        "@libfiu",
     ],
 )

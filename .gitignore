@@ -178,3 +178,7 @@ curvefs/sdk/output/
 hadoop-test/
 nnbench-test/
 dependency-reduced-pom.xml
+
+
+third-party/build
+third-party/installed

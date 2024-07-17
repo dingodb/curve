@@ -30,9 +30,8 @@ cc_test(
     deps = [
         "//curvefs/src/metaserver:curvefs_metaserver",
         "//test/fs:fs_mock",
-        "//external:gflags",
-        "@com_google_googletest//:gtest",
-        "@com_google_googletest//:gtest_main",
+        "@gflags//:gflags",
+        "@gtest//:gtest",
     ],
 )
 

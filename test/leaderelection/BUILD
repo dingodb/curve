@@ -22,11 +22,10 @@ cc_test(
     copts = CURVE_TEST_COPTS,
     defines = ["FIU_ENABLE"],
     deps = [
+            "@gtest//:gtest",
+            "@libfiu//:libfiu",
             "//src/leader_election:leader_election_for_test",
             "//src/mds/nameserver2/helper",
-            "@com_google_googletest//:gtest_main",
-            "@com_google_googletest//:gtest",
             "//test/mds/mock:common_mock",
-            "@libfiu",
     ],
 )

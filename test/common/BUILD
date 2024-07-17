@@ -28,7 +28,7 @@ cc_test(
         "//src/common/concurrent:curve_concurrent",
         "//src/kvstorageclient:kvstorage_client",
         "//src/common/concurrent:curve_dlock",
-        "@com_google_googletest//:gtest_main",
+        "@gtest//:gtest"
     ],
     copts = CURVE_TEST_COPTS,
 )

@@ -28,9 +28,7 @@ cc_test(
         "//curvefs/src/mds/space:curvefs_mds_space",
         "//curvefs/test/mds/mock:curvefs_mds_mock",
         "//curvefs/test/utils:curvefs_test_utils",
-        "//external:brpc",
-        "//external:butil",
-        "@com_google_googletest//:gtest",
-        "@com_google_googletest//:gtest_main",
+        "@brpc//:brpc",
+        "@gtest//:gtest",
     ],
 )

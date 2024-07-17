@@ -23,10 +23,10 @@ cc_binary(
     ]),
     copts = CURVE_TEST_COPTS,
     deps = [
-        "//external:gflags",
+        "@gflags//:gflags",
+        "@gtest//:gtest",
         "//nebd/src/part2:nebdserver",
         "//nebd/test/part2:mock_lib",
-        "@com_google_googletest//:gtest_main",
     ],
 )
 
@@ -37,10 +37,10 @@ cc_binary(
     ]),
     copts = CURVE_TEST_COPTS,
     deps = [
-        "//external:gflags",
+        "@gflags//:gflags",
+        "@gtest//:gtest",
         "//nebd/src/part2:nebdserver",
         "//nebd/test/part2:mock_lib",
-        "@com_google_googletest//:gtest_main",
     ],
 )
 
@@ -51,10 +51,10 @@ cc_binary(
     ]),
     copts = CURVE_TEST_COPTS,
     deps = [
-        "//external:gflags",
+        "@gflags//:gflags",
+        "@gtest//:gtest",
         "//nebd/src/part2:nebdserver",
         "//nebd/test/part2:mock_lib",
-        "@com_google_googletest//:gtest_main",
     ],
 )
 
@@ -65,10 +65,10 @@ cc_binary(
     ]),
     copts = CURVE_TEST_COPTS,
     deps = [
-        "//external:gflags",
+        "@gflags//:gflags",
+        "@gtest//:gtest",
         "//nebd/src/part2:nebdserver",
         "//nebd/test/part2:mock_lib",
-        "@com_google_googletest//:gtest_main",
     ],
 )
 
@@ -79,10 +79,10 @@ cc_binary(
     ]),
     copts = CURVE_TEST_COPTS,
     deps = [
-        "//external:gflags",
+        "@gflags//:gflags",
+        "@gtest//:gtest",
         "//nebd/src/part2:nebdserver",
         "//nebd/test/part2:mock_lib",
-        "@com_google_googletest//:gtest_main",
     ],
 )
 
@@ -93,10 +93,10 @@ cc_binary(
     ]),
     copts = CURVE_TEST_COPTS,
     deps = [
-        "//external:gflags",
+        "@gflags//:gflags",
+        "@gtest//:gtest",
         "//nebd/src/part2:nebdserver",
         "//nebd/test/part2:mock_lib",
-        "@com_google_googletest//:gtest_main",
     ],
 )
 
@@ -107,10 +107,10 @@ cc_binary(
     ]),
     copts = CURVE_TEST_COPTS,
     deps = [
-        "//external:gflags",
+        "@gflags//:gflags",
+        "@gtest//:gtest",
         "//nebd/src/part2:nebdserver",
         "//nebd/test/part2:mock_lib",
-        "@com_google_googletest//:gtest_main",
     ],
 )
 
@@ -124,6 +124,6 @@ cc_library(
     visibility = ["//visibility:public"],
     deps = [
         "//nebd/src/part2:nebdserver",
-        "@com_google_googletest//:gtest",
+        "@gtest//:gtest",
     ],
 )

@@ -23,9 +23,9 @@ cc_library(
     copts = CURVE_DEFAULT_COPTS,
     visibility = ["//visibility:public"],
     deps = [
+        "@brpc//:brpc",
         "//curvefs/proto:mds_cc_proto",
         "//curvefs/src/mds/common:fs_mds_common",
-        "//external:bvar",
         "//src/common:curve_common",
     ],
 )

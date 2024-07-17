@@ -28,8 +28,8 @@ cc_library(
     copts = CURVE_DEFAULT_COPTS,
     visibility = ["//visibility:public"],
     deps = [
-        "//external:bthread",
-        "//external:glog",
+        "@brpc//:brpc",
+        "@glog//:glog",
         "//include:include-common",
         "//src/common:curve_uncopy",
     ],
@@ -43,7 +43,7 @@ cc_library(
     copts = CURVE_DEFAULT_COPTS,
     visibility = ["//visibility:public"],
     deps = [
-        "//external:bthread",
+        "@brpc//:brpc",
         "//src/common:curve_uncopy",
     ],
 )
@@ -57,7 +57,7 @@ cc_library(
     copts = CURVE_DEFAULT_COPTS,
     visibility = ["//visibility:public"],
     deps = [
-        "//external:glog",
+        "@glog//:glog",
         "//src/kvstorageclient:kvstorage_client",
     ],
 )

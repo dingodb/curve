@@ -23,8 +23,8 @@ cc_library(
     copts = CURVE_DEFAULT_COPTS,
     visibility = ["//visibility:public"],
     deps = [
-        "//external:gflags",
-        "//external:glog",
+        "@gflags//:gflags",
+        "@glog//:glog",
         "//proto:nameserver2_cc_proto",
         "//src/common:curve_common",
         "//src/mds/common:mds_common",
