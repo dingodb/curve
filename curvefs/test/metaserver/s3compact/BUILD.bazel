@@ -29,6 +29,6 @@ cc_test(
         "//curvefs/test/metaserver/copyset/mock:metaserver_copyset_test_mock",
         "//curvefs/test/metaserver/mock:metaserver_test_mock",
         "//curvefs/test/metaserver/storage:metaserver_storage_test_utils",
-        "@com_google_googletest//:gtest",
+        "@gtest//:gtest",
     ],
 )

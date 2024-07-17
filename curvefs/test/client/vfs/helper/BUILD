@@ -23,8 +23,7 @@ cc_library(
     copts = CURVE_DEFAULT_COPTS,
     visibility = ["//visibility:public"],
     deps = [
-        "@com_google_googletest//:gtest",
-        "@com_google_googletest//:gtest_main",
+        "@gtest//:gtest",
         "//curvefs/src/client/vfs:vfs",
         "//curvefs/src/client:fuse_client_lib",
         "//curvefs/test/client:mock",

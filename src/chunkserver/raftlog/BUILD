@@ -27,12 +27,12 @@ cc_library(
     copts = CURVE_DEFAULT_COPTS,
     visibility = ["//visibility:public"],
     deps = [
-        "//external:braft",
-        "//external:bthread",
-        "//external:butil",
-        "//external:gflags",
-        "//external:glog",
-        "//external:protobuf",
+        "@braft//:braft",
+        "@brpc//:brpc",
+        "@gflags//:gflags",
+        "@glog//:glog",
+        "@leveldb//:leveldb",
+        "@protobuf//:protobuf",
         "//src/chunkserver/datastore:chunkserver_datastore",
     ],
 )

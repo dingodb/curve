@@ -17,9 +17,9 @@
 load("//:copts.bzl", "CURVE_TEST_COPTS")
 
 DEPS = [
-    "@com_google_googletest//:gtest",
-    "//external:braft",
-    "//external:gflags",
+    "@gtest//:gtest",
+    "@braft//:braft",
+    "@gflags//:gflags",
     "//include:include-common",
     "//include/chunkserver:include-chunkserver",
     "//src/common:curve_common",

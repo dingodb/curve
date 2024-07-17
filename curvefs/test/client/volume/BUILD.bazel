@@ -29,8 +29,7 @@ cc_test(
         "//curvefs/src/client/logger:logger",
         "//curvefs/test/volume/mock",
         "@com_google_absl//absl/strings",
-        "@com_google_googletest//:gtest",
-        "@com_google_googletest//:gtest_main",
+        "@gtest//:gtest",
         "//curvefs/test/client:mock",
     ],
 )

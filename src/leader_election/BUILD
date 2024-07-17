@@ -23,11 +23,11 @@ cc_library(
     copts = CURVE_DEFAULT_COPTS,
     visibility = ["//visibility:public"],
     deps = [
-        "//external:gflags",
-        "//external:glog",
+        "@gflags//:gflags",
+        "@glog//:glog",
         "//src/kvstorageclient:kvstorage_client",
         "//src/mds/nameserver2/helper",
-        "@libfiu",
+        "@libfiu//:libfiu",
     ],
 )
 
@@ -39,10 +39,10 @@ cc_library(
     defines = ["FIU_ENABLE"],
     visibility = ["//visibility:public"],
     deps = [
-        "//external:gflags",
-        "//external:glog",
+        "@gflags//:gflags",
+        "@glog//:glog",
         "//src/common:curve_common",
         "//src/kvstorageclient:kvstorage_client",
-        "@libfiu",
+        "@libfiu//:libfiu",
     ],
 )

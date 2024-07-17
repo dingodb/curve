@@ -34,13 +34,17 @@
 #    # for curve
 #    sudo dnf install -y fuse3-devel libuuid-devel lz4-devel bzip2-devel libnl3-devel libunwind-devel
 #
-# 3. Setup compile currency, for example:
-#    export BAZEL_JOBS=16
-# 4. Execute build_thirdparties.sh to build thirdparties.
+# 3. Build thirdparties: 
+#    cd third-party
+#    cmake -S . -B build
+#    cmake --build build -j 16
+# 4. Execute build_thirdparties.sh to build etcd client
 #    bash build_thirdparties.sh
-# 5. Execute build.sh to build curve.
+# 5. Setup compile currency, for example:
+#    export BAZEL_JOBS=16
+# 6. Execute build.sh to build curve.
 #    bash build.sh
-# 6. Execute buildfs.sh to build curvefs.
+# 7. Execute buildfs.sh to build curvefs.
 #    bash buildfs.sh
 
 set -x
@@ -158,7 +162,7 @@ then
     bazel build ... --copt -DHAVE_ZLIB=1 --compilation_mode=dbg -s --define=with_glog=true \
     --define=libunwind=true --copt -DGFLAGS_NS=google --copt \
     -Wno-error=format-security --copt -DUSE_BTHREAD_MUTEX --copt -DCURVEVERSION=${curve_version} \
-    --linkopt -L/usr/local/lib ${bazelflags}
+    ${bazelflags}
     if [ $? -ne 0 ]
     then
         echo "build phase1 failed"
@@ -178,7 +182,7 @@ then
     --copt \
     -Wno-error=format-security --copt -DUSE_BTHREAD_MUTEX --linkopt \
     -L${dir}/curvefs_python/tmplib/ --copt -DCURVEVERSION=${curve_version} \
-    --linkopt -L/usr/local/lib ${bazelflags}
+     ${bazelflags}
     if [ $? -ne 0 ]
     then
         echo "build phase2 failed"
@@ -188,7 +192,7 @@ else
     bazel build ... --copt -DHAVE_ZLIB=1 --copt -O2 -s --define=with_glog=true \
     --define=libunwind=true --copt -DGFLAGS_NS=google --copt \
     -Wno-error=format-security --copt -DUSE_BTHREAD_MUTEX --copt -DCURVEVERSION=${curve_version} \
-    --linkopt -L/usr/local/lib ${bazelflags}
+    ${bazelflags}
 
     if [ $? -ne 0 ]
     then
@@ -208,7 +212,7 @@ else
     --copt \
     -Wno-error=format-security --copt -DUSE_BTHREAD_MUTEX --linkopt \
     -L${dir}/curvefs_python/tmplib/ --copt -DCURVEVERSION=${curve_version} \
-    --linkopt -L/usr/local/lib ${bazelflags}
+    ${bazelflags}
 
     if [ $? -ne 0 ]
     then

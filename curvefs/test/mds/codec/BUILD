@@ -24,8 +24,7 @@ cc_test(
     deps = [
         "//curvefs/proto:mds_cc_proto",
         "//curvefs/src/mds/codec:fs_mds_codec",
-        "//external:protobuf",
-        "@com_google_googletest//:gtest",
-        "@com_google_googletest//:gtest_main",
+        "@protobuf//:protobuf",
+        "@gtest//:gtest",
     ],
 )

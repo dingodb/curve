@@ -28,8 +28,8 @@ cc_library(
     linkopts = ["-Wl,-rpath=/usr/lib/nebd"],
     visibility = ["//visibility:public"],
     deps = [
-        "//external:brpc",
-        "//external:glog",
+        "@brpc//:brpc",
+        "@glog//:glog",
         "//include:include-common",
         "//nebd/proto:client_cc_proto",
         "//nebd/src/common:nebd_common",

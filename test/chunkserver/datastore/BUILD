@@ -36,7 +36,7 @@ cc_library(
             "filepool_helper.h",
             ],
     deps = [
-            "@com_google_googletest//:gtest",
+            "@gtest//:gtest",
             "//src/chunkserver/datastore:chunkserver_datastore",
             ],
     copts = CURVE_TEST_COPTS,
@@ -54,15 +54,15 @@ cc_test(
     ],
     copts = CURVE_TEST_COPTS,
     deps = [
-        "@com_google_googletest//:gtest",
-        "//external:gflags",
+        "@gtest//:gtest",
+        "@gflags//:gflags",
+        "@jsoncpp//:jsoncpp",
         "//include:include-common",
         "//include/chunkserver:include-chunkserver",
         "//src/common:curve_common",
         "//src/chunkserver/datastore:chunkserver_datastore",
         "//test/fs:fs_mock",
         "//test/chunkserver/datastore:datastore_mock",
-        "//external:json",
         "//test/chunkserver/datastore:filepool_helper",
     ],
 )

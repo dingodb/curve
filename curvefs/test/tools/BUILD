@@ -28,11 +28,10 @@ cc_test(
     visibility = ["//visibility:public"],
     deps = [
         "//curvefs/src/tools:curvefs_tools_lib",
-        "//external:brpc",
-        "//external:gflags",
-        "//external:glog",
-        "@com_google_googletest//:gtest",
-        "@com_google_googletest//:gtest_main",
+        "@brpc//:brpc",
+        "@gflags//:gflags",
+        "@glog//:glog",
+        "@gtest//:gtest",
     ],
 )
 
@@ -45,11 +44,10 @@ cc_test(
     visibility = ["//visibility:public"],
     deps = [
         "//curvefs/src/tools:curvefs_tools_lib",
-        "//external:brpc",
-        "//external:gflags",
-        "//external:glog",
-        "@com_google_googletest//:gtest",
-        "@com_google_googletest//:gtest_main",
+        "@brpc//:brpc",
+        "@gflags//:gflags",
+        "@glog//:glog",
+        "@gtest//:gtest",
     ],
 )
 
@@ -62,11 +60,10 @@ cc_test(
     visibility = ["//visibility:public"],
     deps = [
         "//curvefs/src/tools:curvefs_tools_lib",
-        "//external:brpc",
-        "//external:gflags",
-        "//external:glog",
-        "@com_google_googletest//:gtest",
-        "@com_google_googletest//:gtest_main",
+        "@brpc//:brpc",
+        "@gflags//:gflags",
+        "@glog//:glog",
+        "@gtest//:gtest",
     ],
 )
 
@@ -80,8 +77,7 @@ cc_test(
     copts = CURVE_TEST_COPTS,
     deps = [
         "//curvefs/src/tools:curvefs_tools_lib",
-        "@com_google_googletest//:gtest",
-        "@com_google_googletest//:gtest_main",
+        "@gtest//:gtest",
     ],
 )
 
@@ -94,8 +90,7 @@ cc_test(
     copts = CURVE_TEST_COPTS,
     deps = [
         "//curvefs/src/tools:curvefs_tools_lib",
-        "@com_google_googletest//:gtest",
-        "@com_google_googletest//:gtest_main",
+        "@gtest//:gtest",
     ],
 )
 
@@ -108,7 +103,6 @@ cc_test(
     copts = CURVE_TEST_COPTS,
     deps = [
         "//curvefs/src/tools:curvefs_tools_lib",
-        "@com_google_googletest//:gtest",
-        "@com_google_googletest//:gtest_main",
+        "@gtest//:gtest",
     ],
 )

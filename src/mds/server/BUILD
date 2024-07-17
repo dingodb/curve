@@ -23,7 +23,7 @@ cc_library(
     copts = CURVE_DEFAULT_COPTS,
     visibility = ["//visibility:public"],
     deps = [
-        "//external:brpc",
+        "@brpc//:brpc",
         "//src/common:curve_common",
         "//src/leader_election",
         "//src/mds/heartbeat",
@@ -43,7 +43,7 @@ cc_library(
     copts = CURVE_TEST_COPTS,
     visibility = ["//visibility:public"],
     deps = [
-        "//external:brpc",
+        "@brpc//:brpc",
         "//src/common:curve_common",
         "//src/leader_election:leader_election_for_test",
         "//src/mds/heartbeat",

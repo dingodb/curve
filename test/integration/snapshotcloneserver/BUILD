@@ -25,7 +25,7 @@ cc_test(
             "test_snapshotcloneserver_helpler.h"
         ],
         deps = ["//src/common/concurrent:curve_concurrent",
-                "//external:gtest",
+                "@gtest//:gtest",
                 "//test/integration/cluster_common:integration_cluster_common",
                 "//src/snapshotcloneserver:snapshot_server_lib",
                 ],
@@ -41,7 +41,7 @@ cc_test(
             "test_snapshotcloneserver_helpler.h"
         ],
         deps = ["//src/common/concurrent:curve_concurrent",
-                "//external:gtest",
+                "@gtest//:gtest",
                 "//test/integration/cluster_common:integration_cluster_common",
                 "//src/snapshotcloneserver:snapshot_server_lib",
                 ],
@@ -58,7 +58,7 @@ cc_test(
             "test_snapshotcloneserver_helpler.h"
         ],
         deps = ["//src/common/concurrent:curve_concurrent",
-                "//external:gtest",
+                "@gtest//:gtest",
                 "//test/integration/cluster_common:integration_cluster_common",
                 "//src/snapshotcloneserver:snapshot_server_lib",
                 ],
@@ -74,7 +74,7 @@ cc_test(
             "test_snapshotcloneserver_helpler.h"
         ],
         deps = ["//src/common/concurrent:curve_concurrent",
-                "//external:gtest",
+                "@gtest//:gtest",
                 "//test/integration/cluster_common:integration_cluster_common",
                 "//src/snapshotcloneserver:snapshot_server_lib",
                 ],
@@ -98,10 +98,10 @@ cc_test(
             "snapshotcloneserver_module.cpp"
         ],
         deps = ["//src/common/concurrent:curve_concurrent",
-                "//external:gtest",
+                "@gtest//:gtest",
+                "@libfiu//:libfiu",
                 "//test/integration/cluster_common:integration_cluster_common",
                 "//src/snapshotcloneserver:snapshot_server_lib",
-                "@libfiu",
                 ],
         copts = CURVE_TEST_COPTS,
         defines = ["UNIT_TEST", "FIU_ENABLE"],

@@ -23,9 +23,8 @@ cc_test(
     defines = ["UNIT_TEST"],
     visibility = ["//visibility:public"],
     deps = [
+        "@gtest//:gtest",
         "//curvefs/src/common:curvefs_common",
-        "@com_google_googletest//:gtest",
-        "@com_google_googletest//:gtest_main",
         "//curvefs/src/client/common",
     ],
 )

@@ -26,14 +26,14 @@ cc_library(
     ],
     visibility = ["//visibility:public"],
     deps = [
+        "@com_google_absl//absl/strings",
+        "@glog//:glog",
+        "@brpc//:brpc",
+        "@libmemcached//:memcache",
         "//curvefs/proto:curvefs_topology_cc_proto",
         "//curvefs/src/client/common:common",
         "//curvefs/src/client/metric:client_metric",
-        "@com_google_absl//absl/strings",
-        "//external:glog",
-        "//external:bthread",
         "//src/common:curve_common",
         "//src/common:curve_s3_adapter",
-        "@libmemcached",
     ],
 )

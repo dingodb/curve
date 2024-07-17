@@ -23,9 +23,9 @@ cc_library(
     copts = CURVE_DEFAULT_COPTS,
     visibility = ["//visibility:public"],
     deps = [
-        "//external:brpc",
-        "//external:gflags",
-        "//external:glog",
+        "@brpc//:brpc",
+        "@gflags//:gflags",
+        "@glog//:glog",
         "//proto:chunkserver-cc-protos",
         "//proto:topology_cc_proto",
         "//src/common:curve_common",

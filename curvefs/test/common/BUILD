@@ -22,9 +22,9 @@ cc_test(
         "*.cpp",
     ]),
     deps = [
-        "//external:bthread",
         "//curvefs/src/common:curvefs_common",
-        "@com_google_googletest//:gtest_main",
+        "@brpc//:brpc",
+        "@gtest//:gtest",
         "@com_google_absl//absl/memory",
         "@com_google_absl//absl/utility",
     ],

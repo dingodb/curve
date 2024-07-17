@@ -30,7 +30,7 @@ cc_test(
         "//curvefs/test/utils:curvefs_test_utils",
         "//src/common:curve_common",
         "//test/fs:fs_mock",
-        "@com_google_googletest//:gtest",
+        "@gtest//:gtest",
     ],
 )
 
@@ -45,6 +45,6 @@ cc_test(
         "//curvefs/test/utils:curvefs_test_utils",
         "//src/common:curve_common",
         "//test/fs:fs_mock",
-        "@com_google_googletest//:gtest",
+        "@gtest//:gtest",
     ],
 )

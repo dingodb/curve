@@ -22,11 +22,10 @@ cc_test(
     copts = CURVE_TEST_COPTS,
     deps = [
             "//src/mds/nameserver2:nameserver2",
-            "@com_google_googletest//:gtest_main",
-            "@com_google_googletest//:gtest",
             "//src/common:curve_common",
             "//src/mds/nameserver2/allocstatistic:alloc_statistic",
             "//test/mds/mock:common_mock",
             "//src/mds/nameserver2/helper:helper",
+            "@gtest//:gtest",
     ],
 )

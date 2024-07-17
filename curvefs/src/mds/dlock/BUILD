@@ -23,7 +23,7 @@ cc_library(
     copts = CURVE_DEFAULT_COPTS,
     visibility = ["//visibility:public"],
     deps = [
-        "//external:protobuf",
+        "@protobuf//:protobuf",
         "//src/common:curve_common",
         "//src/common/concurrent:curve_concurrent",
         "//src/kvstorageclient:kvstorage_client",

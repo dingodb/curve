@@ -32,9 +32,7 @@ cc_test(
         "//curvefs/test/metaserver/storage:metaserver_storage_test_utils",
         "//curvefs/test/client:mock",
         "//curvefs/test/metaserver/copyset/mock:metaserver_copyset_test_mock",
-        "//external:gflags",
-        "@com_google_googletest//:gtest",
-        "@com_google_googletest//:gtest_main",
-        "@com_google_googletest//:gtest_prod",
+        "@gflags//:gflags",
+        "@gtest//:gtest",
     ],
 )

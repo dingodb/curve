@@ -8,9 +8,8 @@ cc_library(
                 ]),
     visibility = ["//visibility:public"],
     deps = [
-        "@com_google_googletest//:gtest",
-        "@com_google_googletest//:gtest_main",
-        "//external:gflags",
+        "@gtest//:gtest",
+        "@gflags//:gflags",
         "//src/tools:curve_tool_lib",
     ],
     copts = CURVE_TEST_COPTS,

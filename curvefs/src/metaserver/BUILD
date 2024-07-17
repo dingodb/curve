@@ -69,18 +69,18 @@ cc_library(
         "//curvefs/src/volume:volume",
         "//curvefs/src/client:fuse_client_lib",
         "//curvefs/src/client:filesystem_xattr",
-        "//external:braft",
         "//src/common:curve_common",
         "//src/fs:lfs",
         "//curvefs/src/common:dynamic_vlog",
         "//curvefs/src/common:threading",
-        "@rocksdb//:rocksdb_lib",
+        "@braft//:braft",
+        "@rocksdb//:rocksdb",
+        "@gtest//:gtest",
+        "@protobuf//:protobuf",
         "@com_google_absl//absl/cleanup",
         "@com_google_absl//absl/container:btree",
         "@com_google_absl//absl/memory",
         "@com_google_absl//absl/utility",
-        "@com_google_protobuf//:protobuf",
-        "//external:gtest",
     ],
 )
 
@@ -92,9 +92,9 @@ cc_library(
     copts = CURVE_DEFAULT_COPTS,
     visibility = ["//visibility:public"],
     deps = [
-        "//external:glog",
         "//src/common:curve_common",
         "//curvefs/proto:metaserver_cc_proto",
+        "@glog//:glog",
         "@com_google_absl//absl/container:btree",
     ],
 )
@@ -109,12 +109,12 @@ cc_library(
         "//curvefs/proto:metaserver_cc_proto",
         "//curvefs/src/common:curvefs_common",
         "//curvefs/proto:mds_cc_proto",
-        "//external:gflags",
-        "//external:glog",
         "//src/common:curve_s3_adapter",
         "//curvefs/src/client/common",
         "//curvefs/src/client/metric:client_metric",
         "//curvefs/src/client/rpcclient",
+        "@glog//:glog",
+        "@gflags//:gflags",
     ],
 )
 

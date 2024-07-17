@@ -23,8 +23,8 @@ cc_library(
     copts = CURVE_DEFAULT_COPTS,
     visibility = ["//visibility:public"],
     deps = [
-        "//external:gflags",
-        "//external:glog",
+        "@gflags//:gflags",
+        "@glog//:glog",
         "//src/common:curve_common",
         "//src/idgenerator",
         "//src/kvstorageclient:kvstorage_client",

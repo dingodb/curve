@@ -51,7 +51,7 @@ cc_library(
     copts = CURVE_DEFAULT_COPTS,
     visibility = ["//visibility:public"],
     deps = [
-        "//external:bvar",
+        "@brpc//:brpc",
     ],
 )
 
@@ -89,9 +89,6 @@ cc_library(
         "//curvefs/src/client/kvclient:memcached_client_lib",
         "//curvefs/src/client/logger:logger",
         ":filesystem_xattr",
-        "//external:brpc",
-        "//external:gflags",
-        "//external:glog",
         "//src/client:curve_client",
         "//src/common:curve_common",
         "//src/common:curve_s3_adapter",
@@ -100,6 +97,11 @@ cc_library(
         "//curvefs/src/common:dynamic_vlog",
         "//curvefs/src/common:threading",
         "//curvefs/src/metaserver:metaserver_storage_conv",
+        "@brpc//:brpc",
+        "@gflags//:gflags",
+        "@glog//:glog",
+        "@gtest//:gtest",
+        "@fmt//:fmt",
         "@com_google_absl//absl/memory",
         "@com_google_absl//absl/strings",
         "@com_google_absl//absl/synchronization",
@@ -107,7 +109,6 @@ cc_library(
         "@com_google_absl//absl/meta:type_traits",
         "@com_google_absl//absl/types:optional",
         "@com_google_absl//absl/container:btree",
-        "@com_google_googletest//:gtest_prod",
         "@spdlog//:spdlog",
     ],
 )
