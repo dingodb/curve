@@ -23,6 +23,7 @@
 #ifndef SRC_COMMON_SNAPSHOTCLONE_SNAPSHOTCLONE_DEFINE_H_
 #define SRC_COMMON_SNAPSHOTCLONE_SNAPSHOTCLONE_DEFINE_H_
 
+#include <cstdint>
 #include <string>
 #include <map>
 

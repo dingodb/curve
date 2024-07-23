@@ -50,10 +50,16 @@ http_archive(
 # abseil-cpp
 http_archive(
   name = "com_google_absl",
-  urls = ["https://github.com/abseil/abseil-cpp/archive/refs/tags/20210324.2.tar.gz"],
-  strip_prefix = "abseil-cpp-20210324.2",
-  sha256 = "59b862f50e710277f8ede96f083a5bb8d7c9595376146838b9580be90374ee1f",
+  urls = ["https://github.com/abseil/abseil-cpp/archive/refs/tags/20240116.2.tar.gz"],
+  strip_prefix = "abseil-cpp-20240116.2",
+  sha256 = "733726b8c3a6d39a4120d7e45ea8b41a434cdacde401cba500f14236c49b39dc",
 )
+# http_archive(
+#   name = "com_google_absl",
+#   urls = ["https://github.com/abseil/abseil-cpp/archive/refs/tags/20230125.3.tar.gz"],
+#   strip_prefix = "abseil-cpp-20230125.3",
+#   sha256 = "5366d7e7fa7ba0d915014d387b66d0d002c03236448e1ba9ef98122c13b35c36",
+# )
 
 new_local_repository(
     name = "etcdclient",

@@ -23,6 +23,7 @@
 #ifndef CURVEFS_SRC_TOOLS_USAGE_CURVEFS_SPACE_BASE_TOOL_H_
 #define CURVEFS_SRC_TOOLS_USAGE_CURVEFS_SPACE_BASE_TOOL_H_
 
+#include <cstdint>
 #include <sstream>
 #include <string>
 
