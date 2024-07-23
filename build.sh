@@ -35,9 +35,13 @@
 #    sudo dnf install -y fuse3-devel libuuid-devel lz4-devel bzip2-devel libnl3-devel libunwind-devel
 #
 # 3. Build thirdparties: 
+#    git submodule sync
+#    git submodule update --init --recursive 
+#    
 #    cd third-party
 #    cmake -S . -B build
 #    cmake --build build -j 16
+#    
 # 4. Execute build_thirdparties.sh to build etcd client
 #    bash build_thirdparties.sh
 # 5. Setup compile currency, for example:
