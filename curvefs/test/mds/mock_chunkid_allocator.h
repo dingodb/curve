@@ -21,7 +21,7 @@
 #ifndef CURVEFS_TEST_MDS_MOCK_CHUNKID_ALLOCATOR_H_
 #define CURVEFS_TEST_MDS_MOCK_CHUNKID_ALLOCATOR_H_
 
-#include <gmock/gmock.h>
+#include "gmock/gmock.h"
 #include <gtest/gtest.h>
 
 #include <memory>
@@ -33,12 +33,17 @@ namespace curvefs {
 namespace mds {
 
 class MockChunkIdAllocatorImpl : public ChunkIdAllocatorImpl {
- public:
-    MOCK_METHOD1(GenChunkId, int(uint64_t*));
-    MOCK_METHOD3(Init, void(std::shared_ptr<KVStorageClient> client,
-                            std::string chunkIdStoreKey, uint64_t bundleSize));
-    MOCK_METHOD1(AllocateBundleIds, int(int));
+public:
+  MOCK_METHOD( int, GenChunkId, (uint64_t idNum, uint64_t *chunkId) , (override));
+
+  MOCK_METHOD(void, Init,
+              (const std::shared_ptr<KVStorageClient> &client,
+               const std::string &chunkIdStoreKey,
+               uint64_t bundleSize),
+              (override));
+
+  MOCK_METHOD(int, AllocateBundleIds, (int bundleSize), (override));
 };
-}  // namespace mds
-}  // namespace curvefs
-#endif  // CURVEFS_TEST_MDS_MOCK_CHUNKID_ALLOCATOR_H_
+} // namespace mds
+} // namespace curvefs
+#endif // CURVEFS_TEST_MDS_MOCK_CHUNKID_ALLOCATOR_H_
