@@ -101,10 +101,10 @@ class ChunkIdAllocatorImpl : public ChunkIdAllocator {
      * but this class object will work as old configuration,
      * until the chunkIds in the current bundle is exhausted.
      */
-    void Init(
+    virtual void Init(
         const std::shared_ptr<KVStorageClient>& client = nullptr,
         const std::string& chunkIdStoreKey = CHUNKID_NAME_KEY_PREFIX,
-        uint64_t bundleSize = CHUNKBUNDLEALLOCATED);
+        uint64_t bundleSize = CHUNKBUNDLEALLOCATED) override;
     /**
      * @brief get bundleSize chunkIds from etcd
      *

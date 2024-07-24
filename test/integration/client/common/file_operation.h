@@ -23,6 +23,7 @@
 #ifndef TEST_INTEGRATION_CLIENT_COMMON_FILE_OPERATION_H_
 #define TEST_INTEGRATION_CLIENT_COMMON_FILE_OPERATION_H_
 
+#include <cstdint>
 #include <string>
 #include <vector>
 

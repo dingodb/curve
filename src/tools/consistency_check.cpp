@@ -268,8 +268,8 @@ int ConsistencyCheck::CheckChunkHash(const Chunk& chunk,
 
 int ConsistencyCheck::CheckApplyIndex(const CopySet copyset,
                                       const CsAddrsType& csAddrs) {
-    uint64_t preIndex;
-    uint64_t curIndex;
+    uint64_t preIndex = 0;
+    uint64_t curIndex = 0;
     bool first = true;
     int ret = 0;
     for (const auto& csAddr : csAddrs) {

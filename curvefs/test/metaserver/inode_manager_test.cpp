@@ -134,12 +134,12 @@ class InodeManagerTest : public ::testing::Test {
 
     bool EqualS3ChunkInfoList(const S3ChunkInfoList& lhs,
                               const S3ChunkInfoList& rhs) {
-        size_t size = lhs.s3chunks_size();
+        int size = lhs.s3chunks_size();
         if (size != rhs.s3chunks_size()) {
             return false;
         }
 
-        for (size_t i = 0; i < size; i++) {
+        for (int i = 0; i < size; i++) {
             if (!EqualS3ChunkInfo(lhs.s3chunks(i), rhs.s3chunks(i))) {
                 return false;
             }
@@ -166,7 +166,7 @@ class InodeManagerTest : public ::testing::Test {
         std::shared_ptr<Iterator> iterator,
         const std::vector<uint64_t> chunkIndexs,
         const std::vector<S3ChunkInfoList> lists) {
-        size_t size = 0;
+        int size = 0;
         Key4S3ChunkInfoList key;
         S3ChunkInfoList list4get;
         ASSERT_EQ(iterator->Status(), 0);
