@@ -53,6 +53,8 @@
 
 set -x
 
+g_root="${PWD}"
+
 echo "Please make sure you have executed build_thirdparties.sh, and the thirdparties have been built successfully."
 echo "Only one time is enough, unless you want to rebuild the thirdparties."
 
@@ -166,6 +168,7 @@ then
     bazel build ... --copt -DHAVE_ZLIB=1 --compilation_mode=dbg -s --define=with_glog=true \
     --define=libunwind=true --copt -DGFLAGS_NS=google --copt \
     -Wno-error=format-security --copt -DUSE_BTHREAD_MUTEX --copt -DCURVEVERSION=${curve_version} \
+    --copt -DCLIENT_CONF_PATH="\"${g_root}/curvefs/conf/client.conf\"" \
     ${bazelflags}
     if [ $? -ne 0 ]
     then
@@ -173,7 +176,7 @@ then
         exit
     fi
 
-    bash ./curvefs_python/configure.sh
+    bash ./curvefs_python/configure.sh python3
 
     if [ $? -ne 0 ]
     then
@@ -186,6 +189,7 @@ then
     --copt \
     -Wno-error=format-security --copt -DUSE_BTHREAD_MUTEX --linkopt \
     -L${dir}/curvefs_python/tmplib/ --copt -DCURVEVERSION=${curve_version} \
+    --copt -DCLIENT_CONF_PATH="\"${g_root}/curvefs/conf/client.conf\"" \
      ${bazelflags}
     if [ $? -ne 0 ]
     then
@@ -196,6 +200,7 @@ else
     bazel build ... --copt -DHAVE_ZLIB=1 --copt -O2 -s --define=with_glog=true \
     --define=libunwind=true --copt -DGFLAGS_NS=google --copt \
     -Wno-error=format-security --copt -DUSE_BTHREAD_MUTEX --copt -DCURVEVERSION=${curve_version} \
+    --copt -DCLIENT_CONF_PATH="\"${g_root}/curvefs/conf/client.conf\"" \
     ${bazelflags}
 
     if [ $? -ne 0 ]
@@ -204,7 +209,7 @@ else
         exit
     fi
 
-    bash ./curvefs_python/configure.sh
+    bash ./curvefs_python/configure.sh python3
     if [ $? -ne 0 ]
     then
         echo "configure failed"
@@ -216,6 +221,7 @@ else
     --copt \
     -Wno-error=format-security --copt -DUSE_BTHREAD_MUTEX --linkopt \
     -L${dir}/curvefs_python/tmplib/ --copt -DCURVEVERSION=${curve_version} \
+    --copt -DCLIENT_CONF_PATH="\"${g_root}/curvefs/conf/client.conf\"" \
     ${bazelflags}
 
     if [ $? -ne 0 ]

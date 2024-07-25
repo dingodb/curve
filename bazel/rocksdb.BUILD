@@ -10,5 +10,8 @@ cc_library(
     deps = [
         ":rocksdb_import",
         "@third-party-headers//:headers",
+	"@snappy//:snappy",
+	"@zlib//:zlib",
+	"@gflags//:gflags",
     ],
 )

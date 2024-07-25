@@ -61,8 +61,6 @@ cc_library(
     copts = CURVE_DEFAULT_COPTS,
     linkopts = [
         "-lrt",
-        "-lssl",
-        "-lcrypto",
         "-ldl",
         "-lz",
     ],
@@ -71,6 +69,7 @@ cc_library(
         "@brpc//:brpc",
         "@gflags//:gflags",
         "@protobuf//:protobuf",
+	"@openssl//:openssl",
         "//proto:chunkserver-cc-protos",
         "//src/client:curve_client",
         "//src/common:curve_common",
