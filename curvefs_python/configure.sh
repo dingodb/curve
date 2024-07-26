@@ -67,7 +67,8 @@ libs=`cat BUILD | tr -d "[:blank:]" | grep "^\"-l" | sed 's/[",]//g' | awk '{ pr
 
 rm -rf tmplib
 mkdir tmplib
-for i in `find $curve_path/$bazelbin/|grep -w so|grep -v solib|grep -v params`
+
+for i in `find $curve_path/$bazelbin/ -name "*.so" | grep -v solib | grep -v params | grep -v external`
   do
     basename=$(basename $i)
     linkname=`echo $basename | awk -F'.' '{ print $1 }' | awk '{ print substr($0, 4) }'`

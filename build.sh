@@ -15,42 +15,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# How to build:
-# 1. Install bazel 4.2.4
-#    wget https://github.com/bazelbuild/bazel/releases/download/4.2.4/bazel-4.2.4-linux-x86_64
-# 2. Install deps, for ubuntu:
-#    # for cpp compile
-#    sudo apt install vim unzip netcat net-tools tzdata wget git gcc g++ make automake maven openssl libssl-dev cmake libtool gpg
-#    # for rocksdb
-#    sudo apt install libsnappy-dev zlib1g-dev libbz2-dev liblz4-dev libzstd-dev libgflags-dev
-#    # for curve
-#    sudo apt install libfuse3-dev uuid-dev libfiu-dev liblz4-dev libbz2-dev libnl-genl-3-dev libunwind-dev
-#
-#    for rocky8:
-#    # for cpp compile
-#    sudo dnf install -y vim unzip nmap-ncat net-tools tzdata wget git gcc gcc-c++ make automake maven openssl openssl-devel cmake libtool gnupg2
-#    # for rocksdb
-#    sudo dnf install -y snappy-devel zlib-devel bzip2-devel lz4-devel libzstd-devel gflags-devel
-#    # for curve
-#    sudo dnf install -y fuse3-devel libuuid-devel lz4-devel bzip2-devel libnl3-devel libunwind-devel
-#
-# 3. Build thirdparties: 
-#    git submodule sync
-#    git submodule update --init --recursive 
-#    
-#    cd third-party
-#    cmake -S . -B build
-#    cmake --build build -j 16
-#    
-# 4. Execute build_thirdparties.sh to build etcd client
-#    bash build_thirdparties.sh
-# 5. Setup compile currency, for example:
-#    export BAZEL_JOBS=16
-# 6. Execute build.sh to build curve.
-#    bash build.sh
-# 7. Execute buildfs.sh to build curvefs.
-#    bash buildfs.sh
-
 set -x
 
 g_root="${PWD}"

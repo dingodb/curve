@@ -16,6 +16,8 @@
 
 set -x
 
+g_root="${PWD}"
+
 echo "Please make sure you have executed build_thirdparties.sh, and the thirdparties have been built successfully."
 echo "Only one time is enough, unless you want to rebuild the thirdparties."
 
@@ -49,8 +51,10 @@ then
 fi
 
 bazel build curvefs/... --copt -DHAVE_ZLIB=1 ${DEBUG_FLAG} -s \
---define=with_glog=true --define=libunwind=true --copt -DGFLAGS_NS=google --copt -Wno-error=format-security --copt \
--DUSE_BTHREAD_MUTEX --copt -DCURVEVERSION=${curve_version} --linkopt -L/usr/local/lib ${bazelflags}
+--define=with_glog=true --define=libunwind=true --copt -DGFLAGS_NS=google --copt -Wno-error=format-security  \
+--copt -DUSE_BTHREAD_MUTEX --copt -DCURVEVERSION=${curve_version}  \
+--copt -DCLIENT_CONF_PATH="\"${g_root}/curvefs/conf/client.conf\"" \
+${bazelflags}
 
 if [ $? -ne 0 ]
 then
