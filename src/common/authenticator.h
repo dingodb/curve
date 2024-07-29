@@ -23,6 +23,7 @@
 #define SRC_COMMON_AUTHENTICATOR_H_
 
 #include <string>
+#include <cstdint>
 
 namespace curve {
 namespace common {

@@ -566,7 +566,7 @@ int NebdClient::InitChannel() {
         option_.requestOption.rpcHealthCheckIntervalS;
     brpc::FLAGS_circuit_breaker_max_isolation_duration_ms =
         option_.requestOption.rpcMaxDelayHealthCheckIntervalMs;
-    int ret = channel_.InitWithSockFile(
+    int ret = channel_.Init(
         option_.serverAddress.c_str(), nullptr);
     if (ret != 0) {
         LOG(ERROR) << "Init Channel failed, socket addr = "

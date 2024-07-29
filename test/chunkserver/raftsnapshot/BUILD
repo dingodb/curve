@@ -24,11 +24,10 @@ cc_test(
     ]),
     copts = CURVE_TEST_COPTS,
     deps = [
-        "@com_google_googletest//:gtest",
-        "@com_google_googletest//:gtest_main",
-        "//external:braft",
         "//src/chunkserver/raftsnapshot:chunkserver-raft-snapshot",
         "//test/fs:fs_mock",
         "//test/chunkserver:chunkserver-test-util-lib",
+        "@gtest//:gtest",
+        "@braft//:braft",
     ],
 )

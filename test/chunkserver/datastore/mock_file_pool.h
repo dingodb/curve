@@ -38,6 +38,7 @@ class MockFilePool : public FilePool {
     explicit MockFilePool(std::shared_ptr<LocalFileSystem> lfs)
         : FilePool(lfs) {}
     ~MockFilePool() {}
+    MOCK_METHOD(bool, Initialize, (const FilePoolOptions& cfop), (override));
     MOCK_METHOD1(Initialize, bool(FilePoolOptions));
     MOCK_METHOD2(GetFileImpl, int(const std::string&, const char*));
     MOCK_METHOD1(RecycleFile, int(const std::string&  chunkpath));

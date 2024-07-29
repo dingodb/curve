@@ -61,7 +61,7 @@ TEST_F(ChunkServerBroadCasterTest, BroadCastFileEpochSuccess) {
     MockChunkServiceImpl mockChunkService;
     ASSERT_EQ(server_->AddService(&mockChunkService,
                                   brpc::SERVER_DOESNT_OWN_SERVICE), 0);
-    ASSERT_EQ(server_->StartAtSockFile(listenAddr_.c_str(), nullptr), 0);
+    ASSERT_EQ(server_->Start(listenAddr_.c_str(), nullptr), 0);
 
     CHUNK_OP_STATUS csRet = CHUNK_OP_STATUS::CHUNK_OP_STATUS_SUCCESS;
     EXPECT_CALL(mockChunkService, UpdateEpoch(_, _, _, _))
@@ -89,7 +89,9 @@ TEST_F(ChunkServerBroadCasterTest, BroadCastFileEpochSuccess) {
     for (int i = 0; i < 1000; i++) {
         CopysetPeerInfo<ChunkServerID> csinfo;
         csinfo.peerID = i;
-        csinfo.internalAddr = PeerAddr(EndPoint(listenAddr_));
+        EndPoint ep;
+        str2endpoint(listenAddr_.c_str(), &ep);
+        csinfo.internalAddr = PeerAddr(ep);
         csLocs.push_back(std::move(csinfo));
     }
     int ret = broadCaster.BroadCastFileEpoch(fileId, epoch, csLocs);
@@ -100,7 +102,7 @@ TEST_F(ChunkServerBroadCasterTest, BroadCastFileEpochFailedByEpochTooOld) {
     MockChunkServiceImpl mockChunkService;
     ASSERT_EQ(server_->AddService(&mockChunkService,
                                   brpc::SERVER_DOESNT_OWN_SERVICE), 0);
-    ASSERT_EQ(server_->StartAtSockFile(listenAddr_.c_str(), nullptr), 0);
+    ASSERT_EQ(server_->Start(listenAddr_.c_str(), nullptr), 0);
 
     CHUNK_OP_STATUS csRet = CHUNK_OP_STATUS::CHUNK_OP_STATUS_EPOCH_TOO_OLD;
     EXPECT_CALL(mockChunkService, UpdateEpoch(_, _, _, _))
@@ -126,7 +128,9 @@ TEST_F(ChunkServerBroadCasterTest, BroadCastFileEpochFailedByEpochTooOld) {
     for (int i = 0; i < 20; i++) {
         CopysetPeerInfo<ChunkServerID> csinfo;
         csinfo.peerID = i;
-        csinfo.internalAddr = PeerAddr(EndPoint(listenAddr_));
+        EndPoint ep;
+        str2endpoint(listenAddr_.c_str(), &ep);
+        csinfo.internalAddr = PeerAddr(ep);
         csLocs.push_back(std::move(csinfo));
     }
     int ret = broadCaster.BroadCastFileEpoch(fileId, epoch, csLocs);

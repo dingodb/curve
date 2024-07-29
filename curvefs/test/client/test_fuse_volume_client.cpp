@@ -63,6 +63,7 @@ using ::testing::SetArgPointee;
 using ::testing::SetArgReferee;
 using ::testing::AtLeast;
 using ::testing::SetArrayArgument;
+using ::testing::DoAll;
 
 using rpcclient::MockMdsClient;
 using rpcclient::MockMetaServerClient;

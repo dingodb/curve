@@ -25,6 +25,21 @@
 
 #include <braft/raft.h>
 #include <braft/snapshot_throttle.h>
+#ifdef ANNOTATE_IGNORE_READS_BEGIN
+#undef ANNOTATE_IGNORE_READS_BEGIN
+#endif
+#ifdef ANNOTATE_IGNORE_READS_END
+#undef ANNOTATE_IGNORE_READS_END
+#endif
+#ifdef ANNOTATE_IGNORE_READS_AND_WRITES_BEGIN
+#undef ANNOTATE_IGNORE_READS_AND_WRITES_BEGIN
+#endif
+#ifdef ANNOTATE_IGNORE_READS_AND_WRITES_END
+#undef ANNOTATE_IGNORE_READS_AND_WRITES_END
+#endif
+#ifdef ANNOTATE_UNPROTECTED_READ
+#undef ANNOTATE_UNPROTECTED_READ
+#endif
 #include <gflags/gflags.h>
 
 #include <cstdint>

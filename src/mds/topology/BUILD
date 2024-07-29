@@ -25,9 +25,6 @@ cc_library(
     copts = CURVE_DEFAULT_COPTS,
     visibility = ["//visibility:public"],
     deps = [
-        "//external:brpc",
-        "//external:glog",
-        "//external:json",
         "//proto:chunkserver-cc-protos",
         "//proto:nameserver2_cc_proto",
         "//proto:topology_cc_proto",
@@ -35,5 +32,8 @@ cc_library(
         "//src/mds/common:mds_common",
         "//src/mds/copyset",
         "//src/mds/nameserver2/allocstatistic:alloc_statistic",
+        "@brpc//:brpc",
+        "@glog//:glog",
+        "@jsoncpp//:jsoncpp",
     ],
 )

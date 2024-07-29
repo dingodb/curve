@@ -30,6 +30,7 @@
 using ::testing::_;
 using ::testing::Invoke;
 using ::testing::SetArgPointee;
+using ::testing::DoAll;
 
 namespace curvefs {
 namespace mds {

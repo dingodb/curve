@@ -39,7 +39,7 @@ cc_test(
     deps = [
             "//src/fs:lfs",
             "//test/fs:fs_mock",
-            "@com_google_googletest//:gtest_main",
+            "@gtest//:gtest",
             ],
     visibility = ["//visibility:public"],
 )

@@ -21,8 +21,6 @@
  */
 
 
-#include <gmock/gmock-generated-actions.h>
-#include <gmock/gmock-more-actions.h>
 #include <gmock/gmock.h>
 #include <gtest/gtest.h>
 
@@ -82,6 +80,7 @@ using ::testing::Return;
 using ::testing::SetArgPointee;
 using ::testing::SetArgReferee;
 using ::testing::SetArrayArgument;
+using ::testing::DoAll;
 
 using curvefs::client::common::FileHandle;
 using rpcclient::MetaServerClientDone;

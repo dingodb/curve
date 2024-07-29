@@ -64,7 +64,7 @@ void TopologyServiceManager::RegistChunkServer(
     uint32_t port = request->port();
     ChunkServerStat stat;
     bool useChunkFilePoolAsWalPool = false;
-    uint32_t useChunkFilePoolAsWalPoolReserve;
+    uint32_t useChunkFilePoolAsWalPoolReserve = 0;
     bool useChunkFilepool = false;
     if (request->has_chunkfilepoolsize()) {
         stat.chunkFilepoolSize = request->chunkfilepoolsize();

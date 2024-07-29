@@ -24,14 +24,13 @@ cc_test(
    ),
    copts = CURVE_TEST_COPTS,
    deps = [
-       "//external:gtest",
-       "@com_google_googletest//:gtest_main",
        "//curvefs/src/client/rpcclient:rpcclient",
        "//curvefs/src/client:filesystem_xattr",
        "//curvefs/proto:curvefs_topology_cc_proto",
        "//curvefs/src/common:curvefs_common",
        "//curvefs/test/utils:curvefs_test_utils",
-       "//curvefs/test/client:client_test_utils"
+       "//curvefs/test/client:client_test_utils",
+       "@gtest//:gtest",
    ],
    visibility = ["//visibility:public"],
 )
@@ -42,9 +41,8 @@ cc_library(
     copts = CURVE_TEST_COPTS + ["-DUNIT_TEST"],
     visibility = ["//visibility:public"],
     deps = [
-       "//external:gtest",
-       "@com_google_googletest//:gtest_main",
        "//curvefs/src/client/rpcclient:rpcclient",
        "//curvefs/proto:curvefs_topology_cc_proto",
+       "@gtest//:gtest",
     ],
 )

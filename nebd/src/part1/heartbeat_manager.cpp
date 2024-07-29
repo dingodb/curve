@@ -43,7 +43,7 @@ HeartbeatManager::HeartbeatManager(
 int HeartbeatManager::Init(const HeartbeatOption& option) {
     heartbeatOption_ = option;
 
-    int ret = channel_.InitWithSockFile(
+    int ret = channel_.Init(
         option.serverAddress.c_str(), nullptr);
     if (ret != 0) {
         LOG(ERROR) << "Connection Manager channel init failed";

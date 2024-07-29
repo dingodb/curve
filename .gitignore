@@ -157,3 +157,6 @@ GPATH
 GRTAGS
 GTAGS
 core.*
+
+third-party/build
+third-party/installed

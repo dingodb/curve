@@ -24,12 +24,12 @@ cc_library(
     copts = CURVE_DEFAULT_COPTS,
     visibility = ["//visibility:public"],
     deps = [
-        "//external:brpc",
-        "//external:gflags",
-        "//external:glog",
         "//proto:topology_cc_proto",
         "//src/common:curve_common",
         "//src/mds/topology",
+        "@brpc//:brpc",
+        "@gflags//:gflags",
+        "@glog//:glog",
     ],
 )
 
@@ -41,11 +41,11 @@ cc_library(
     copts = CURVE_DEFAULT_COPTS,
     visibility = ["//visibility:public"],
     deps = [
-        "//external:brpc",
-        "//external:gflags",
-        "//external:glog",
         "//proto:topology_cc_proto",
         "//src/common:curve_common",
         "//src/mds/topology",
+        "@brpc//:brpc",
+        "@gflags//:gflags",
+        "@glog//:glog",
     ],
 )

@@ -24,14 +24,14 @@ cc_library(
            ]),
     visibility = ["//visibility:public"],
     deps = [
-        "//external:braft",
-        "//external:gflags",
-        "//external:glog",
         "//include:include-common",
         "//include/chunkserver:include-chunkserver",
         "//src/fs:lfs",
         "//src/common:curve_common",
-        "//external:json"
+        "@braft//:braft",
+        "@gflags//:gflags",
+        "@glog//:glog",
+        "@jsoncpp//:jsoncpp",
     ],
     copts = CURVE_DEFAULT_COPTS,
 )

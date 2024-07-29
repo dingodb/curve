@@ -23,9 +23,9 @@ cc_library(
     copts = CURVE_DEFAULT_COPTS,
     visibility = ["//visibility:public"],
     deps = [
-        "//external:gflags",
-        "//external:glog",
         "//src/common:curve_common",
         "@etcdclient",
+        "@gflags//:gflags",
+        "@glog//:glog",
     ],
 )

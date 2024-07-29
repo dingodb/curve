@@ -17,14 +17,6 @@
 load("//:copts.bzl", "CURVE_TEST_COPTS")
 
 DEPS = [
-    "//external:braft",
-    "//external:brpc",
-    "//external:bthread",
-    "//external:butil",
-    "//external:gflags",
-    "//external:glog",
-    "//external:leveldb",
-    "//external:protobuf",
     "//proto:chunkserver-cc-protos",
     "//src/chunkserver:chunkserver-test-lib",
     "//src/chunkserver/datastore:chunkserver_datastore",
@@ -34,8 +26,13 @@ DEPS = [
     "//test/chunkserver:chunkserver_mock",
     "//test/chunkserver/datastore:datastore_mock",
     "//test/chunkserver/datastore:filepool_helper",
-    "@com_google_googletest//:gtest",
-    "@com_google_googletest//:gtest_main",
+    "@braft//:braft",
+    "@brpc//:brpc",
+    "@gflags//:gflags",
+    "@glog//:glog",
+    "@leveldb//:leveldb",
+    "@protobuf//:protobuf",
+    "@gtest//:gtest",
 ]
 
 cc_library(
@@ -49,9 +46,9 @@ cc_library(
     copts = CURVE_TEST_COPTS,
     visibility = ["//visibility:public"],
     deps = [
-        "//external:braft",
         "//src/chunkserver:chunkserver-test-lib",
         "//src/common:curve_common",
+        "@braft//:braft",
     ],
 )
 
@@ -163,7 +160,6 @@ cc_test(
     name = "scan-manager-test",
     srcs = ["scan_manager_test.cpp",
             "mock_copyset_node_manager.h"],
-    copts = ["-std=c++11"],
     deps = DEPS,
 )
 
@@ -219,19 +215,17 @@ cc_test(
     ],
     copts = CURVE_TEST_COPTS,
     deps = [
-        "//external:braft",
-        "//external:brpc",
-        "//external:bthread",
-        "//external:butil",
-        "//external:gflags",
-        "//external:leveldb",
-        "//external:protobuf",
         "//proto:chunkserver-cc-protos",
         "//src/chunkserver:chunkserver-test-lib",
         "//src/common:curve_common",
         "//test/client/fake:fake_lib",
         "//test/integration/common:integration-test-common",
-        "@com_google_googletest//:gtest_main",
+        "@braft//:braft",
+        "@brpc//:brpc",
+        "@gflags//:gflags",
+        "@leveldb//:leveldb",
+        "@protobuf//:protobuf",
+        "@gtest//:gtest",
     ],
 )
 

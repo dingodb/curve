@@ -27,7 +27,7 @@ cc_library(
     copts = CURVE_DEFAULT_COPTS,
     visibility = ["//visibility:public"],
     deps = [
-        "//external:glog",
+        "@glog//:glog",
     ],
 )
 
@@ -48,14 +48,11 @@ cc_library(
     copts = CURVE_DEFAULT_COPTS,
     visibility = ["//visibility:public"],
     deps = [
-        "//external:brpc",
-        "//external:butil",
-        "//external:glog",
         "//src/common/concurrent:curve_concurrent",
         ":macros",
-    ],
-    linkopts = [
-        "-luuid",
+        "@brpc//:brpc",
+        "@glog//:glog",
+        "@uuid//:uuid",
     ],
 )
 
@@ -68,9 +65,9 @@ cc_library(
     copts = CURVE_DEFAULT_COPTS,
     visibility = ["//visibility:public"],
     deps = [
-        "//external:butil",
-        "//external:glog",
         "//src/common/concurrent:curve_concurrent",
+        "@brpc//:brpc",
+        "@glog//:glog",
     ],
 )
 
@@ -92,9 +89,9 @@ cc_library(
     copts = CURVE_DEFAULT_COPTS,
     visibility = ["//visibility:public"],
     deps = [
-        "//external:glog",
         "//src/common:curve_common",
-        "@aws",
+        "@glog//:glog",
+        "@aws//:aws",
     ],
 )
 
@@ -106,7 +103,7 @@ cc_library(
     copts = CURVE_DEFAULT_COPTS,
     visibility = ["//visibility:public"],
     deps = [
-        "//external:json",
+        "@jsoncpp//:jsoncpp",
     ],
 )
 

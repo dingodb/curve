@@ -94,7 +94,7 @@ using curve::common::kFilePoolMaigic;
 
 class CompareInternal {
  public:
-    bool operator()(std::string s1, std::string s2) {
+    bool operator()(std::string s1, std::string s2) const {
         auto index1 = std::atoi(s1.c_str());
         auto index2 = std::atoi(s2.c_str());
         return index1 < index2;

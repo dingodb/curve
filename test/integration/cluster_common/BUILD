@@ -28,10 +28,10 @@ cc_library(
         "//src/common:curve_common",
         "//src/client:curve_client",
         "//src/snapshotcloneserver:snapshot_server_lib",
-        "//external:gflags",
-        "//external:glog",
         "//test/util:test_util",
-        "@com_google_googletest//:gtest",
+        "@gflags//:gflags",
+        "@glog//:glog",
+        "@gtest//:gtest",
     ],
     linkopts = [
     ]
@@ -42,8 +42,7 @@ cc_test(
   srcs = glob(["cluster_basic_test.cpp"]),
   copts = CURVE_TEST_COPTS,
   deps = [
-      "@com_google_googletest//:gtest_main",
-      "@com_google_googletest//:gtest",
-      "//test/integration/cluster_common:integration_cluster_common",
+        "//test/integration/cluster_common:integration_cluster_common",
+        "@gtest//:gtest",
   ]
 )

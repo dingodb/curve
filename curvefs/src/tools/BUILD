@@ -23,7 +23,7 @@ cc_binary(
     visibility = ["//visibility:public"],
     deps = [
         "//curvefs/src/tools:curvefs_tools_lib",
-        "//external:gflags",
+        "@gflags//:gflags",
     ],
 )
 
@@ -67,12 +67,12 @@ cc_library(
         "//curvefs/src/mds/common:fs_mds_common",
         "//curvefs/src/mds/topology:curvefs_deal_peerid",
         "//curvefs/src/common:curvefs_common",
-        "//external:brpc",
-        "//external:gflags",
-        "//external:glog",
-        "//external:json",
         "//src/common:curve_common",
         "//src/mds/topology",
+        "@brpc//:brpc",
+        "@gflags//:gflags",
+        "@glog//:glog",
+        "@jsoncpp//:jsoncpp",
         "@com_google_absl//absl/cleanup",
         "@com_google_absl//absl/strings",
     ],

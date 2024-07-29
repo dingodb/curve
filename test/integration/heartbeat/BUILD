@@ -29,9 +29,8 @@ cc_test(
         "//src/mds/topology:topology",
         "//src/mds/schedule",
         "//test/mds/mock:common_mock",
-        "@com_google_googletest//:gtest_main",
-        "@com_google_googletest//:gtest",
-        "//external:brpc"
+        "@brpc//:brpc",
+        "@gtest//:gtest",
     ],
     copts = CURVE_TEST_COPTS,
 )
@@ -49,9 +48,8 @@ cc_test(
         "//src/mds/topology:topology",
         "//src/mds/schedule",
         "//test/mds/mock:common_mock",
-        "@com_google_googletest//:gtest_main",
-        "@com_google_googletest//:gtest",
-        "//external:brpc"
+        "@brpc//:brpc",
+        "@gtest//:gtest",
     ],
     copts = CURVE_TEST_COPTS,
 )

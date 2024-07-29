@@ -24,13 +24,12 @@ cc_test(
     ]),
     copts = CURVE_TEST_COPTS,
     deps = [
-        "//external:gflags",
-        "//external:glog",
         "//src/mds/heartbeat",
         "//src/mds/schedule",
         "//src/mds/topology",
         "//test/mds/mock:common_mock",
-        "@com_google_googletest//:gtest",
-        "@com_google_googletest//:gtest_main",
+        "@gflags//:gflags",
+        "@glog//:glog",
+        "@gtest//:gtest",
     ],
 )

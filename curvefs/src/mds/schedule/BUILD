@@ -23,13 +23,13 @@ cc_library(
     copts = CURVE_DEFAULT_COPTS,
     visibility = ["//visibility:public"],
     deps = [
-        "//external:brpc",
-        "//external:gflags",
-        "//external:glog",
         "//src/common:curve_common",
         "//curvefs/src/mds/topology:curvefs_topology",
         "//curvefs/src/mds/common:fs_mds_common",
         "//curvefs/proto:curvefs_schedule_cc_proto",
         "//src/mds/schedule:schedule_template",
+        "@brpc//:brpc",
+        "@gflags//:gflags",
+        "@glog//:glog",
     ],
 )

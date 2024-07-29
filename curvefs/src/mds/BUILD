@@ -69,15 +69,15 @@ cc_library(
         "//curvefs/src/mds/space:curvefs_mds_space",
         "//curvefs/src/mds/topology:curvefs_topology",
         "//curvefs/src/client:filesystem_xattr",
-        "//external:brpc",
-        "//external:gflags",
-        "//external:glog",
         "//src/common:curve_common",
         "//src/common:curve_s3_adapter",
         "//src/common/concurrent:curve_concurrent",
         "//src/idgenerator",
         "//src/kvstorageclient:kvstorage_client",
         "//src/leader_election",
+        "@brpc//:brpc",
+        "@gflags//:gflags",
+        "@glog//:glog",
     ],
 )
 

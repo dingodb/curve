@@ -25,10 +25,6 @@ cc_library(
     ],
     visibility = ["//visibility:public"],
     deps = [
-        "//external:brpc",
-        "//external:gflags",
-        "//external:glog",
-        "//external:leveldb",
         "//proto:nameserver2_cc_proto",
         "//src/common:curve_auth",
         "//src/common:curve_common",
@@ -41,5 +37,9 @@ cc_library(
         "//src/mds/nameserver2/idgenerator:nameserver_idgenerator",
         "//src/mds/snapshotcloneclient",
         "//src/mds/topology",
+        "@gflags//:gflags",
+        "@brpc//:brpc",
+        "@glog//:glog",
+        "@leveldb//:leveldb",
     ],
 )

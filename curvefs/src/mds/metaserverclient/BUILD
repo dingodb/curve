@@ -30,6 +30,6 @@ cc_library(
         "//curvefs/proto:mds_cc_proto",
         "//curvefs/proto:metaserver_cc_proto",
         "//curvefs/src/mds/topology:curvefs_deal_peerid",
-        "//external:brpc",
+        "@brpc//:brpc",
     ],
 )

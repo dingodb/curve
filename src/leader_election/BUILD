@@ -23,10 +23,11 @@ cc_library(
     copts = CURVE_DEFAULT_COPTS,
     visibility = ["//visibility:public"],
     deps = [
-        "//external:gflags",
-        "//external:glog",
         "//src/kvstorageclient:kvstorage_client",
         "//src/mds/nameserver2/helper",
+        "@gflags//:gflags",
+        "@glog//:glog",
+        "@libfiu//:libfiu",
     ],
 )
 
@@ -36,12 +37,12 @@ cc_library(
     hdrs = ["leader_election.h"],
     copts = CURVE_TEST_COPTS,
     defines = ["FIU_ENABLE"],
-    linkopts = ["-lfiu"],
     visibility = ["//visibility:public"],
     deps = [
-        "//external:gflags",
-        "//external:glog",
         "//src/common:curve_common",
         "//src/kvstorageclient:kvstorage_client",
+        "@gflags//:gflags",
+        "@glog//:glog",
+        "@libfiu//:libfiu",
     ],
 )

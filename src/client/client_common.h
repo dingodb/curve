@@ -196,7 +196,7 @@ struct PeerAddr {
 
     bool IsEmpty() const {
         return (addr_.ip == butil::IP_ANY && addr_.port == 0) &&
-                addr_.socket_file.empty();
+                !butil::is_endpoint_extended(addr_);
     }
 
     // 重置当前地址信息

@@ -24,7 +24,7 @@ cc_library(
     visibility = ["//visibility:public"],
     deps = [
         "//curvefs/src/mds/common:fs_mds_common",
-        "//external:protobuf",
         "//src/common:curve_common",
+        "@protobuf//:protobuf",
     ],
 )

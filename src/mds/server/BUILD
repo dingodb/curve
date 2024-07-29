@@ -23,7 +23,6 @@ cc_library(
     copts = CURVE_DEFAULT_COPTS,
     visibility = ["//visibility:public"],
     deps = [
-        "//external:brpc",
         "//src/common:curve_common",
         "//src/leader_election",
         "//src/mds/heartbeat",
@@ -33,6 +32,7 @@ cc_library(
         "//src/mds/schedule",
         "//src/mds/schedule/scheduleService:scheduleservice",
         "//src/mds/topology",
+        "@brpc//:brpc",
     ],
 )
 
@@ -43,7 +43,6 @@ cc_library(
     copts = CURVE_TEST_COPTS,
     visibility = ["//visibility:public"],
     deps = [
-        "//external:brpc",
         "//src/common:curve_common",
         "//src/leader_election:leader_election_for_test",
         "//src/mds/heartbeat",
@@ -53,5 +52,6 @@ cc_library(
         "//src/mds/schedule",
         "//src/mds/schedule/scheduleService:scheduleservice",
         "//src/mds/topology",
+        "@brpc//:brpc",
     ],
 )

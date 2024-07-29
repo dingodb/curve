@@ -25,7 +25,7 @@ cc_library(
     copts = CURVE_DEFAULT_COPTS,
     visibility = ["//visibility:public"],
     deps = [
-        "//external:glog",
         "//src/mds/common:mds_common",
+        "@glog//:glog",
     ],
 )

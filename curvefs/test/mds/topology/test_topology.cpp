@@ -36,6 +36,7 @@ using ::testing::_;
 using ::testing::AnyOf;
 using ::testing::Contains;
 using ::testing::SetArgPointee;
+using ::testing::DoAll;
 using ::curve::common::Configuration;
 
 class TestTopology : public ::testing::Test {
@@ -156,7 +157,7 @@ class TestTopology : public ::testing::Test {
 TEST_F(TestTopology, test_init_success) {
     std::vector<ClusterInformation> infos;
     EXPECT_CALL(*storage_, LoadClusterInfo(_))
-        .WillOnce(DoAll(SetArgPointee<0>(infos), Return(true)));
+        .WillOnce(testing::DoAll(SetArgPointee<0>(infos), Return(true)));
 
     EXPECT_CALL(*storage_, StorageClusterInfo(_))
         .Times(2).WillRepeatedly(Return(true));
@@ -181,17 +182,17 @@ TEST_F(TestTopology, test_init_success) {
     partitionMap_[0x61] = Partition(0x01, 0x11, 0x51, 0x61, 0, 100);
 
     EXPECT_CALL(*storage_, LoadPool(_, _)).WillOnce(
-        DoAll(SetArgPointee<0>(poolMap_), Return(true)));
+        testing::DoAll(SetArgPointee<0>(poolMap_), Return(true)));
     EXPECT_CALL(*storage_, LoadZone(_, _)).WillOnce(
-        DoAll(SetArgPointee<0>(zoneMap_), Return(true)));
+        testing::DoAll(SetArgPointee<0>(zoneMap_), Return(true)));
     EXPECT_CALL(*storage_, LoadServer(_, _)).WillOnce(
-        DoAll(SetArgPointee<0>(serverMap_), Return(true)));
+        testing::DoAll(SetArgPointee<0>(serverMap_), Return(true)));
     EXPECT_CALL(*storage_, LoadMetaServer(_, _)).WillOnce(
-        DoAll(SetArgPointee<0>(metaServerMap_), Return(true)));
+        testing::DoAll(SetArgPointee<0>(metaServerMap_), Return(true)));
     EXPECT_CALL(*storage_, LoadCopySet(_, _)).WillOnce(
-        DoAll(SetArgPointee<0>(copySetMap_), Return(true)));
+        testing::DoAll(SetArgPointee<0>(copySetMap_), Return(true)));
     EXPECT_CALL(*storage_, LoadPartition(_, _)).WillOnce(
-        DoAll(SetArgPointee<0>(partitionMap_), Return(true)));
+        testing::DoAll(SetArgPointee<0>(partitionMap_), Return(true)));
     EXPECT_CALL(*storage_, LoadMemcacheCluster(_, _))
         .WillOnce(Return(true));
     EXPECT_CALL(*storage_, LoadFs2MemcacheCluster(_)).WillOnce(Return(true));
@@ -214,7 +215,7 @@ TEST_F(TestTopology, test_init_success) {
 TEST_F(TestTopology, test_init_loadClusterFail) {
     std::vector<ClusterInformation> infos;
     EXPECT_CALL(*storage_, LoadClusterInfo(_))
-        .WillOnce(DoAll(SetArgPointee<0>(infos),
+        .WillOnce(testing::DoAll(SetArgPointee<0>(infos),
                 Return(false)));
 
     TopologyOption option;
@@ -225,7 +226,7 @@ TEST_F(TestTopology, test_init_loadClusterFail) {
 TEST_F(TestTopology, test_init_StorageClusterInfoFail) {
     std::vector<ClusterInformation> infos;
     EXPECT_CALL(*storage_, LoadClusterInfo(_))
-        .WillOnce(DoAll(SetArgPointee<0>(infos),
+        .WillOnce(testing::DoAll(SetArgPointee<0>(infos),
                 Return(true)));
 
     EXPECT_CALL(*storage_, StorageClusterInfo(_))
@@ -241,7 +242,7 @@ TEST_F(TestTopology, test_init_loadPoolFail) {
     ClusterInformation info("uuid1");
     infos.push_back(info);
     EXPECT_CALL(*storage_, LoadClusterInfo(_))
-        .WillOnce(DoAll(SetArgPointee<0>(infos),
+        .WillOnce(testing::DoAll(SetArgPointee<0>(infos),
                 Return(true)));
 
     EXPECT_CALL(*storage_, LoadPool(_, _))
@@ -257,7 +258,7 @@ TEST_F(TestTopology, test_init_LoadZoneFail) {
     ClusterInformation info("uuid1");
     infos.push_back(info);
     EXPECT_CALL(*storage_, LoadClusterInfo(_))
-        .WillOnce(DoAll(SetArgPointee<0>(infos),
+        .WillOnce(testing::DoAll(SetArgPointee<0>(infos),
                 Return(true)));
 
     EXPECT_CALL(*storage_, LoadPool(_, _))
@@ -276,7 +277,7 @@ TEST_F(TestTopology, test_init_LoadServerFail) {
     ClusterInformation info("uuid1");
     infos.push_back(info);
     EXPECT_CALL(*storage_, LoadClusterInfo(_))
-        .WillOnce(DoAll(SetArgPointee<0>(infos),
+        .WillOnce(testing::DoAll(SetArgPointee<0>(infos),
                 Return(true)));
 
     EXPECT_CALL(*storage_, LoadPool(_, _))
@@ -299,7 +300,7 @@ TEST_F(TestTopology, test_init_LoadMetaServerFail) {
     ClusterInformation info("uuid1");
     infos.push_back(info);
     EXPECT_CALL(*storage_, LoadClusterInfo(_))
-        .WillOnce(DoAll(SetArgPointee<0>(infos),
+        .WillOnce(testing::DoAll(SetArgPointee<0>(infos),
                 Return(true)));
 
     EXPECT_CALL(*storage_, LoadPool(_, _))
@@ -325,7 +326,7 @@ TEST_F(TestTopology, test_init_LoadCopysetFail) {
     ClusterInformation info("uuid1");
     infos.push_back(info);
     EXPECT_CALL(*storage_, LoadClusterInfo(_))
-        .WillOnce(DoAll(SetArgPointee<0>(infos),
+        .WillOnce(testing::DoAll(SetArgPointee<0>(infos),
                 Return(true)));
 
     EXPECT_CALL(*storage_, LoadPool(_, _))
@@ -354,7 +355,7 @@ TEST_F(TestTopology, test_init_LoadPartitionFail) {
     ClusterInformation info("uuid1");
     infos.push_back(info);
     EXPECT_CALL(*storage_, LoadClusterInfo(_))
-        .WillOnce(DoAll(SetArgPointee<0>(infos),
+        .WillOnce(testing::DoAll(SetArgPointee<0>(infos),
                 Return(true)));
 
     EXPECT_CALL(*storage_, LoadPool(_, _))

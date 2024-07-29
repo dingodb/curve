@@ -24,9 +24,8 @@ cc_test(
     deps = [
             "//src/leader_election:leader_election_for_test",
             "//src/mds/nameserver2/helper",
-            "@com_google_googletest//:gtest_main",
-            "@com_google_googletest//:gtest",
             "//test/mds/mock:common_mock",
+            "@gtest//:gtest",
+            "@libfiu//:libfiu",
     ],
-    linkopts = ["-lfiu"],
 )

@@ -20,8 +20,6 @@
  * @Author: chenwei
  */
 
-#include <gmock/gmock-generated-matchers.h>
-#include <gmock/gmock-spec-builders.h>
 #include <gmock/gmock.h>
 #include <google/protobuf/util/message_differencer.h>
 #include <gtest/gtest.h>
@@ -150,12 +148,12 @@ class InodeStorageTest : public ::testing::Test {
 
     bool EqualS3ChunkInfoList(const S3ChunkInfoList& lhs,
                               const S3ChunkInfoList& rhs) {
-        size_t size = lhs.s3chunks_size();
+        int size = lhs.s3chunks_size();
         if (size != rhs.s3chunks_size()) {
             return false;
         }
 
-        for (size_t i = 0; i < size; i++) {
+        for (int i = 0; i < size; i++) {
             if (!EqualS3ChunkInfo(lhs.s3chunks(i), rhs.s3chunks(i))) {
                 return false;
             }

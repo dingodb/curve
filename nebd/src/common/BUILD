@@ -27,10 +27,8 @@ cc_library(
     copts = CURVE_DEFAULT_COPTS,
     visibility = ["//visibility:public"],
     deps = [
-        "//external:bthread",
-        "//external:butil",
-        "//external:bvar",
-        "//external:glog",
         "//src/common:macros",
+        "@brpc//:brpc",
+        "@glog//:glog",
     ],
 )

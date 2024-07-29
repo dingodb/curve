@@ -17,14 +17,14 @@
 load("//:copts.bzl", "CURVE_TEST_COPTS")
 
 DEPS = [
-    "@com_google_googletest//:gtest",
-    "//external:braft",
-    "//external:gflags",
     "//include:include-common",
     "//include/chunkserver:include-chunkserver",
     "//src/common:curve_common",
     "//src/chunkserver/datastore:chunkserver_datastore",
     "//test/chunkserver/datastore:filepool_helper",
+    "@gtest//:gtest",
+    "@braft//:braft",
+    "@gflags//:gflags",
 ]
 
 cc_test(

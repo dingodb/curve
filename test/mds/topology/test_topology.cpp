@@ -35,6 +35,7 @@ using ::testing::Return;
 using ::testing::_;
 using ::testing::Contains;
 using ::testing::SetArgPointee;
+using ::testing::DoAll;
 using ::curve::common::Configuration;
 
 class TestTopology : public ::testing::Test {

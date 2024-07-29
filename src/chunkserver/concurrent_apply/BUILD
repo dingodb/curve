@@ -24,7 +24,7 @@ cc_library(
            ]),
     visibility = ["//visibility:public"],
     deps = [
-        "//external:glog",
+        "@glog//:glog",
         "//src/common:curve_common",
         "//proto:chunkserver-cc-protos"
     ],

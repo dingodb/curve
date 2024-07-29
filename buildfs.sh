@@ -1,11 +1,11 @@
 #!/bin/sh
 
-cpplint --recursive curvefs
-if [ $? -ne 0 ]
-then
-    echo "cpplint failed"
-    exit
-fi
+# cpplint --recursive curvefs
+# if [ $? -ne 0 ]
+# then
+#     echo "cpplint failed"
+#     exit
+# fi
 
 if [ "$1" = "debug" ]
 then

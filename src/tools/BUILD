@@ -23,19 +23,16 @@ cc_binary(
     ],
     copts = CURVE_DEFAULT_COPTS,
     deps = [
-        "//external:braft",
-        "//external:brpc",
-        "//external:bthread",
-        "//external:butil",
-        "//external:bvar",
-        "//external:gflags",
-        "//external:glog",
-        "//external:json",
-        "//external:protobuf",
         "//proto:chunkserver-cc-protos",
         "//src/chunkserver:chunkserver-lib",
         "//src/common:curve_common",
         "//src/fs:lfs",
+        "@braft//:braft",
+        "@brpc//:brpc",
+        "@glog//:glog",
+        "@gflags//:gflags",
+        "@jsoncpp//:jsoncpp",
+        "@protobuf//:protobuf",
     ],
 )
 
@@ -45,8 +42,8 @@ cc_binary(
     copts = CURVE_DEFAULT_COPTS,
     visibility = ["//visibility:public"],
     deps = [
-        "//external:gflags",
         "//src/tools:curve_tool_lib",
+        "@gflags//:gflags",
     ],
 )
 
@@ -56,9 +53,9 @@ cc_binary(
     copts = CURVE_DEFAULT_COPTS,
     visibility = ["//visibility:public"],
     deps = [
-        "//external:braft",
-        "//external:gflags",
         "//src/tools:curve_tool_lib",
+        "@braft//:braft",
+        "@gflags//:gflags",
     ],
 )
 
@@ -79,15 +76,6 @@ cc_library(
     copts = CURVE_DEFAULT_COPTS,
     visibility = ["//visibility:public"],
     deps = [
-        "//external:braft",
-        "//external:brpc",
-        "//external:bthread",
-        "//external:butil",
-        "//external:bvar",
-        "//external:gflags",
-        "//external:glog",
-        "//external:leveldb",
-        "//external:protobuf",
         "//include/chunkserver:include-chunkserver",
         "//include/client:include_client",
         "//proto:chunkserver-cc-protos",
@@ -99,5 +87,11 @@ cc_library(
         "//src/common:curve_common",
         "//src/mds/common:mds_common",
         "//src/mds/nameserver2",
+        "@braft//:braft",
+        "@brpc//:brpc",
+        "@glog//:glog",
+        "@gflags//:gflags",
+        "@protobuf//:protobuf",
+        "@leveldb//:leveldb",
     ],
 )

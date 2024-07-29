@@ -23,9 +23,9 @@ cc_test(
         ],
         ),
         deps = ["//src/common/concurrent:curve_concurrent", 
-                "//external:gtest",
                 "//src/snapshotcloneserver:snapshot_server_lib",
                 "//test/util:test_util", 
+                "@gtest//:gtest",
                 ],
         copts = CURVE_TEST_COPTS
         )

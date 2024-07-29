@@ -23,8 +23,8 @@ cc_binary(
     ]),
     copts = CURVE_TEST_COPTS,
     deps = [
-        "//external:gflags",
         "//nebd/src/common:nebd_common",
-        "@com_google_googletest//:gtest_main",
+        "@gflags//:gflags",
+        "@gtest//:gtest",
     ],
 )

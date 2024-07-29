@@ -64,12 +64,12 @@ class MockDiskCacheManager2 : public DiskCacheManager {
     MockDiskCacheManager2() : DiskCacheManager() {}
     ~MockDiskCacheManager2() {}
 
-    MOCK_METHOD2(Init,
-                 int(S3Client *client, const S3ClientAdaptorOption option));
+    MOCK_METHOD(int, Init, (std::shared_ptr<S3Client> client, const S3ClientAdaptorOption option), (override));
+
     MOCK_METHOD0(IsDiskCacheFull, bool());
     MOCK_METHOD3(WriteReadDirect, int(const std::string fileName,
                                       const char *buf, uint64_t length));
-    MOCK_METHOD1(IsCached, bool(const std::string));
+    MOCK_METHOD(bool, IsCached, (const std::string &name), (override));
 };
 
 class MockDiskCacheManagerImpl : public DiskCacheManagerImpl {

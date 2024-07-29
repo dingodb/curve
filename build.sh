@@ -1,7 +1,8 @@
 #!/bin/sh
 
 #
-#  Copyright (c) 2020 NetEase Inc.
+# Copyright (c) 2023 dingodb.com, Inc. All Rights Reserved
+# Copyright (c) 2020 NetEase Inc.
 #
 #  Licensed under the Apache License, Version 2.0 (the "License");
 #  you may not use this file except in compliance with the License.
@@ -22,12 +23,12 @@ bazel clean
 rm -rf curvefs_python/BUILD
 rm -rf curvefs_python/tmplib/
 
-git submodule update --init
-if [ $? -ne 0 ]
-then
-    echo "submodule init failed"
-    exit
-fi
+# git submodule update --init
+# if [ $? -ne 0 ]
+# then
+#     echo "submodule init failed"
+#     exit
+# fi
 
 #step2 获取tag版本和git提交版本信息
 #获取tag版本
@@ -51,16 +52,17 @@ curve_version=${tag_version}+${commit_id}${debug}
 
 
 #step3 执行编译
-# check bazel verion, bazel vesion must = 4.2.2
+# check bazel verion, bazel vesion must = 4.2.4
 bazel_version=`bazel version | grep "Build label" | awk '{print $3}'`
 if [ -z ${bazel_version} ]
 then
-    echo "please install bazel 4.2.2 first"
+    echo "please install bazel 4.2.4 first"
     exit
 fi
-if [ ${bazel_version} != "4.2.2" ]
+
+if [ ${bazel_version} != "4.2.4" ]
 then
-    echo "bazel version must 4.2.2"
+    echo "bazel version must 4.2.4"
     echo "now version is ${bazel_version}"
     exit
 fi
@@ -90,15 +92,6 @@ fi
 echo "gcc version : "`gcc -dumpversion`
 
 echo "start compile"
-cd ${dir}/thirdparties/etcdclient
-make clean
-make all
-if [ $? -ne 0 ]
-then
-    echo "make etcd client failed"
-    exit
-fi
-cd ${dir}
 
 cp ${dir}/thirdparties/etcdclient/libetcdclient.h ${dir}/include/etcdclient/etcdclient.h
 
@@ -120,7 +113,7 @@ then
     echo "build phase1 failed"
     exit
 fi
-bash ./curvefs_python/configure.sh
+bash ./curvefs_python/configure.sh python3
 if [ $? -ne 0 ]
 then
     echo "configure failed"
@@ -147,7 +140,7 @@ then
     echo "build phase1 failed"
     exit
 fi
-bash ./curvefs_python/configure.sh
+bash ./curvefs_python/configure.sh python3
 if [ $? -ne 0 ]
 then
     echo "configure failed"

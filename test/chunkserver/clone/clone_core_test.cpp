@@ -37,6 +37,7 @@
 namespace curve {
 namespace chunkserver {
 
+using ::testing::DoAll;
 using curve::chunkserver::CHUNK_OP_TYPE;
 using curve::fs::FileSystemType;
 using curve::fs::LocalFsFactory;

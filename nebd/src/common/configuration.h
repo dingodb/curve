@@ -22,6 +22,7 @@
 
 #include <string>
 #include <map>
+#include <cstdint>
 
 #ifndef NEBD_SRC_COMMON_CONFIGURATION_H_
 #define NEBD_SRC_COMMON_CONFIGURATION_H_

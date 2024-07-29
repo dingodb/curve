@@ -25,9 +25,9 @@ cc_test(
             "test_snapshotcloneserver_helpler.h"
         ],
         deps = ["//src/common/concurrent:curve_concurrent",
-                "//external:gtest",
                 "//test/integration/cluster_common:integration_cluster_common",
                 "//src/snapshotcloneserver:snapshot_server_lib",
+                "@gtest//:gtest",
                 ],
                 copts = CURVE_TEST_COPTS
         )
@@ -41,9 +41,9 @@ cc_test(
             "test_snapshotcloneserver_helpler.h"
         ],
         deps = ["//src/common/concurrent:curve_concurrent",
-                "//external:gtest",
                 "//test/integration/cluster_common:integration_cluster_common",
                 "//src/snapshotcloneserver:snapshot_server_lib",
+                "@gtest//:gtest",
                 ],
                 copts = CURVE_TEST_COPTS
         )
@@ -58,9 +58,9 @@ cc_test(
             "test_snapshotcloneserver_helpler.h"
         ],
         deps = ["//src/common/concurrent:curve_concurrent",
-                "//external:gtest",
                 "//test/integration/cluster_common:integration_cluster_common",
                 "//src/snapshotcloneserver:snapshot_server_lib",
+                "@gtest//:gtest",
                 ],
                 copts = CURVE_TEST_COPTS
         )
@@ -74,9 +74,9 @@ cc_test(
             "test_snapshotcloneserver_helpler.h"
         ],
         deps = ["//src/common/concurrent:curve_concurrent",
-                "//external:gtest",
                 "//test/integration/cluster_common:integration_cluster_common",
                 "//src/snapshotcloneserver:snapshot_server_lib",
+                "@gtest//:gtest",
                 ],
                 copts = CURVE_TEST_COPTS
         )
@@ -98,13 +98,13 @@ cc_test(
             "snapshotcloneserver_module.cpp"
         ],
         deps = ["//src/common/concurrent:curve_concurrent",
-                "//external:gtest",
                 "//test/integration/cluster_common:integration_cluster_common",
                 "//src/snapshotcloneserver:snapshot_server_lib",
+                "@gtest//:gtest",
+                "@libfiu//:libfiu",
                 ],
         copts = CURVE_TEST_COPTS,
         defines = ["UNIT_TEST", "FIU_ENABLE"],
-        linkopts = ["-lfiu"],
         )
 
 

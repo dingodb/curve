@@ -22,6 +22,6 @@ cc_library(
     copts = CURVE_DEFAULT_COPTS,
     visibility = ["//visibility:public"],
     deps = [
-        "//external:braft",
+        "@braft//:braft",
     ],
 )

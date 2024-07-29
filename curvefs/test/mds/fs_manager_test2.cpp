@@ -71,6 +71,7 @@ using ::testing::Matcher;
 using ::testing::Return;
 using ::testing::SaveArg;
 using ::testing::SetArgPointee;
+using ::testing::DoAll;
 using ::curvefs::common::S3Info;
 
 template <typename RpcRequestType, typename RpcResponseType,

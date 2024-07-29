@@ -34,13 +34,6 @@ cc_library(
     copts = CURVE_DEFAULT_COPTS,
     visibility = ["//visibility:public"],
     deps = [
-        "//external:brpc",
-        "//external:bthread",
-        "//external:butil",
-        "//external:gflags",
-        "//external:leveldb",
-        "//external:protobuf",
-        "//external:json",
         "//proto:snapshotcloneserver_cc_proto",
         "//src/common:curve_common",
         "//src/common/concurrent:curve_dlock",
@@ -49,7 +42,12 @@ cc_library(
         "//proto:nameserver2_cc_proto",
         "//proto:chunkserver-cc-protos",
         "//src/client:curve_client",
-        "//src/leader_election:leader_election"
+        "//src/leader_election:leader_election",
+        "@brpc//:brpc",
+        "@gflags//:gflags",
+        "@leveldb//:leveldb",
+        "@protobuf//:protobuf",
+        "@jsoncpp//:jsoncpp",
     ],
 )
 
@@ -68,13 +66,6 @@ cc_binary(
     copts = CURVE_DEFAULT_COPTS,
     visibility = ["//visibility:public"],
     deps = [
-        "//external:brpc",
-        "//external:bthread",
-        "//external:butil",
-        "//external:gflags",
-        "//external:leveldb",
-        "//external:protobuf",
-        "//external:json",
         "//proto:snapshotcloneserver_cc_proto",
         "//src/common:curve_common",
         "//src/common/concurrent:curve_dlock",
@@ -83,6 +74,11 @@ cc_binary(
         "//proto:nameserver2_cc_proto",
         "//proto:chunkserver-cc-protos",
         "//src/client:curve_client",
-        "//src/leader_election:leader_election"
+        "//src/leader_election:leader_election",
+        "@brpc//:brpc",
+        "@gflags//:gflags",
+        "@leveldb//:leveldb",
+        "@protobuf//:protobuf",
+        "@jsoncpp//:jsoncpp",
     ],
 )

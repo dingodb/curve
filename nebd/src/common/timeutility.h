@@ -23,6 +23,7 @@
 #ifndef NEBD_SRC_COMMON_TIMEUTILITY_H_
 #define NEBD_SRC_COMMON_TIMEUTILITY_H_
 
+#include <time.h>
 #include <stdint.h>
 #include <sys/time.h>
 #include <sys/types.h>

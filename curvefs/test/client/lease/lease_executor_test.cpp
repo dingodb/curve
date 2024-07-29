@@ -92,7 +92,7 @@ TEST_F(LeaseExecutorTest, test_start_stop) {
     EXPECT_CALL(*mdsCli_, RefreshSession(_, _, _, _, _))
         .WillOnce(Return(FSStatusCode::UNKNOWN_ERROR))
         .WillRepeatedly(
-            DoAll(SetArgPointee<1>(txIds), Return(FSStatusCode::OK)));
+            testing::DoAll(SetArgPointee<1>(txIds), Return(FSStatusCode::OK)));
     EXPECT_CALL(*metaCache_, SetTxId(1, 2))
         .Times(AtLeast(1));
 

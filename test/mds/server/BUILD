@@ -24,9 +24,8 @@ cc_binary(
     defines = ["FIU_ENABLE"],
     visibility = ["//visibility:public"],
     deps = [
-        "@com_google_googletest//:gtest",
-        "@com_google_googletest//:gtest_main",
         "//src/mds/server:mds_for_test",
+        "@libfiu//:libfiu",
+        "@gtest//:gtest",
     ],
-    linkopts = ["-lfiu"],
 )

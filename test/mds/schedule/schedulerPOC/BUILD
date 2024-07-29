@@ -21,12 +21,12 @@ cc_test(
     srcs = [
         "scheduler_poc.cpp",
         "mock_topology.h"],
-    deps = ["//external:gtest",
-            "//src/mds/copyset:copyset",
-            "//src/mds/topology:topology",
-            "//src/mds/schedule:schedule",
-            "//test/mds/mock:common_mock",
-            "@com_google_googletest//:gtest",
-            "@com_google_googletest//:gtest_main"],
+    deps = [
+        "//src/mds/copyset:copyset",
+        "//src/mds/topology:topology",
+        "//src/mds/schedule:schedule",
+        "//test/mds/mock:common_mock",
+        "@gtest//:gtest",
+    ],
     copts = CURVE_TEST_COPTS,
 )

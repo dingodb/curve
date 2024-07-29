@@ -25,10 +25,10 @@ cc_library(
     copts = CURVE_DEFAULT_COPTS,
     visibility = ["//visibility:public"],
     deps = [
-        "//external:brpc",
-        "//external:glog",
-        "//external:json",
         "//proto:nameserver2_cc_proto",
         "//src/common/snapshotclone:curve_snapshotclone",
+        "@brpc//:brpc",
+        "@glog//:glog",
+        "@jsoncpp//:jsoncpp",
     ],
 )

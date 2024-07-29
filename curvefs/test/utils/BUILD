@@ -27,6 +27,6 @@ cc_library(
     copts = CURVE_TEST_COPTS + ["-DUNIT_TEST"],
     visibility = ["//visibility:public"],
     deps = [
-        "//external:protobuf",
+         "@protobuf//:protobuf",       
     ],
 )

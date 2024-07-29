@@ -26,13 +26,12 @@ cc_test(
     copts = CURVE_TEST_COPTS,
     deps = [
             "//curvefs/src/mds:curvefs_mds_lib",
-            "@com_google_googletest//:gtest_main",
-            "@com_google_googletest//:gtest",
-            "//external:brpc",
             "//src/common:curve_common",
             "//curvefs/proto:space_cc_proto",
             "//curvefs/test/mds/mock:curvefs_mds_mock",
             "//test/common:common_mock",
+            "@brpc//:brpc",
+            "@gtest//:gtest",
     ],
 )
 
@@ -45,12 +44,11 @@ cc_test(
     copts = CURVE_TEST_COPTS,
     deps = [
             "//curvefs/src/mds:curvefs_mds_lib",
-            "@com_google_googletest//:gtest_main",
-            "@com_google_googletest//:gtest",
-            "//external:brpc",
             "//src/common:curve_common",
             "//curvefs/proto:space_cc_proto",
             "//curvefs/test/mds/mock:curvefs_mds_mock",
+            "@brpc//:brpc",
+            "@gtest//:gtest",
     ],
 )
 
@@ -62,9 +60,9 @@ cc_test(
     ]),
     copts = CURVE_TEST_COPTS,
     deps = [
-            "//external:gtest",
             "//curvefs/src/mds/topology:curvefs_topology",
             "//curvefs/test/mds/mock:curvefs_mds_mock",
             "//curvefs/src/mds/schedule:curvefs_schedule",
+            "@gtest//:gtest",
     ],
 )

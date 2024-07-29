@@ -23,15 +23,14 @@ cc_binary(
                 "*.cpp",
                 ]),
     deps = [
-        "@com_google_googletest//:gtest",
-        "@com_google_googletest//:gtest_main",
-        "//external:gflags",
         "//src/tools:curve_tool_lib",
         "//test/client/fake:fake_lib",
         "//test/fs:fs_mock",
         "//test/common:common_mock",
         "//test/client/mock:client_mock_lib",
         "//test/tools/mock:curve_tool_mock",
+        "@gtest//:gtest",
+        "@gflags//:gflags",
     ],
     copts = CURVE_TEST_COPTS,
 )

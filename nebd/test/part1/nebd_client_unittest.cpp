@@ -122,7 +122,7 @@ class NebdFileClientTest : public ::testing::Test {
     }
 
     void StartServer(const std::string& address = kNebdServerTestAddress) {
-        ASSERT_EQ(0, server.StartAtSockFile(
+        ASSERT_EQ(0, server.Start(
             address.c_str(), nullptr)) << "Start server failed";
     }
 

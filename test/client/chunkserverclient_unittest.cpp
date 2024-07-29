@@ -86,7 +86,7 @@ TEST_F(ChunkServerClientTest, UpdateFileEpochSuccess) {
     MockChunkServiceImpl mockChunkService;
     ASSERT_EQ(server_->AddService(&mockChunkService,
                                   brpc::SERVER_DOESNT_OWN_SERVICE), 0);
-    ASSERT_EQ(server_->StartAtSockFile(listenAddr_.c_str(), nullptr), 0);
+    ASSERT_EQ(server_->Start(listenAddr_.c_str(), nullptr), 0);
 
     CHUNK_OP_STATUS csRet = CHUNK_OP_STATUS::CHUNK_OP_STATUS_SUCCESS;
     EXPECT_CALL(mockChunkService, UpdateEpoch(_, _, _, _))
@@ -100,7 +100,9 @@ TEST_F(ChunkServerClientTest, UpdateFileEpochSuccess) {
 
     CopysetPeerInfo<ChunkServerID> cs;
     cs.peerID = 1;
-    cs.internalAddr = PeerAddr(EndPoint(listenAddr_));
+    EndPoint ep;
+    str2endpoint(listenAddr_.c_str(), &ep);
+    cs.internalAddr = PeerAddr(ep);
     uint64_t fileId = 1;
     uint64_t epoch = 1;
     auto tracker = std::make_shared<TaskTracker>();
@@ -123,7 +125,7 @@ TEST_F(ChunkServerClientTest, UpdateFileEpochSuccessUsingExternalIp) {
     MockChunkServiceImpl mockChunkService;
     ASSERT_EQ(server_->AddService(&mockChunkService,
                                   brpc::SERVER_DOESNT_OWN_SERVICE), 0);
-    ASSERT_EQ(server_->StartAtSockFile(listenAddr_.c_str(), nullptr), 0);
+    ASSERT_EQ(server_->Start(listenAddr_.c_str(), nullptr), 0);
 
     CHUNK_OP_STATUS csRet = CHUNK_OP_STATUS::CHUNK_OP_STATUS_SUCCESS;
     EXPECT_CALL(mockChunkService, UpdateEpoch(_, _, _, _))
@@ -137,8 +139,15 @@ TEST_F(ChunkServerClientTest, UpdateFileEpochSuccessUsingExternalIp) {
 
     CopysetPeerInfo<ChunkServerID> cs;
     cs.peerID = 1;
-    cs.internalAddr = PeerAddr(EndPoint(std::string("notexist")));
-    cs.externalAddr = PeerAddr(EndPoint(listenAddr_));
+
+    EndPoint ep;
+    str2endpoint("", &ep);
+    cs.internalAddr = PeerAddr(ep);
+
+    EndPoint ep2;
+    str2endpoint(listenAddr_.c_str(), &ep2);
+    cs.externalAddr = PeerAddr(ep2);
+
     uint64_t fileId = 1;
     uint64_t epoch = 1;
     auto tracker = std::make_shared<TaskTracker>();
@@ -160,7 +169,9 @@ TEST_F(ChunkServerClientTest, UpdateFileEpochSuccessUsingExternalIp) {
 TEST_F(ChunkServerClientTest, UpdateFileEpochSuccessForChunkServerOffline) {
     CopysetPeerInfo<ChunkServerID> cs;
     cs.peerID = 1;
-    cs.internalAddr = PeerAddr(EndPoint(listenAddr_));
+    EndPoint ep;
+    str2endpoint(listenAddr_.c_str(), &ep);
+    cs.internalAddr = PeerAddr(ep);
     uint64_t fileId = 1;
     uint64_t epoch = 1;
     auto tracker = std::make_shared<TaskTracker>();
@@ -183,7 +194,7 @@ TEST_F(ChunkServerClientTest, UpdateFileEpochFailedByEpochTooOld) {
     MockChunkServiceImpl mockChunkService;
     ASSERT_EQ(server_->AddService(&mockChunkService,
                                   brpc::SERVER_DOESNT_OWN_SERVICE), 0);
-    ASSERT_EQ(server_->StartAtSockFile(listenAddr_.c_str(), nullptr), 0);
+    ASSERT_EQ(server_->Start(listenAddr_.c_str(), nullptr), 0);
 
     CHUNK_OP_STATUS csRet = CHUNK_OP_STATUS::CHUNK_OP_STATUS_EPOCH_TOO_OLD;
     EXPECT_CALL(mockChunkService, UpdateEpoch(_, _, _, _))
@@ -197,7 +208,9 @@ TEST_F(ChunkServerClientTest, UpdateFileEpochFailedByEpochTooOld) {
 
     CopysetPeerInfo<ChunkServerID> cs;
     cs.peerID = 1;
-    cs.internalAddr = PeerAddr(EndPoint(listenAddr_));
+    EndPoint ep;
+    str2endpoint(listenAddr_.c_str(), &ep);
+    cs.internalAddr = PeerAddr(ep);
     uint64_t fileId = 1;
     uint64_t epoch = 1;
     auto tracker = std::make_shared<TaskTracker>();
@@ -220,7 +233,7 @@ TEST_F(ChunkServerClientTest, UpdateFileEpochFailedUnknown) {
     MockChunkServiceImpl mockChunkService;
     ASSERT_EQ(server_->AddService(&mockChunkService,
                                   brpc::SERVER_DOESNT_OWN_SERVICE), 0);
-    ASSERT_EQ(server_->StartAtSockFile(listenAddr_.c_str(), nullptr), 0);
+    ASSERT_EQ(server_->Start(listenAddr_.c_str(), nullptr), 0);
 
     CHUNK_OP_STATUS csRet = CHUNK_OP_STATUS::CHUNK_OP_STATUS_FAILURE_UNKNOWN;
     EXPECT_CALL(mockChunkService, UpdateEpoch(_, _, _, _))
@@ -234,7 +247,9 @@ TEST_F(ChunkServerClientTest, UpdateFileEpochFailedUnknown) {
 
     CopysetPeerInfo<ChunkServerID> cs;
     cs.peerID = 1;
-    cs.internalAddr = PeerAddr(EndPoint(listenAddr_));
+    EndPoint ep;
+    str2endpoint(listenAddr_.c_str(), &ep);
+    cs.internalAddr = PeerAddr(ep);
     uint64_t fileId = 1;
     uint64_t epoch = 1;
     auto tracker = std::make_shared<TaskTracker>();
@@ -257,7 +272,7 @@ TEST_F(ChunkServerClientTest, UpdateFileEpochFailedForRetryTimesExceed) {
     MockChunkServiceImpl mockChunkService;
     ASSERT_EQ(server_->AddService(&mockChunkService,
                                   brpc::SERVER_DOESNT_OWN_SERVICE), 0);
-    ASSERT_EQ(server_->StartAtSockFile(listenAddr_.c_str(), nullptr), 0);
+    ASSERT_EQ(server_->Start(listenAddr_.c_str(), nullptr), 0);
 
     CHUNK_OP_STATUS csRet = CHUNK_OP_STATUS::CHUNK_OP_STATUS_SUCCESS;
     EXPECT_CALL(mockChunkService, UpdateEpoch(_, _, _, _))
@@ -274,7 +289,9 @@ TEST_F(ChunkServerClientTest, UpdateFileEpochFailedForRetryTimesExceed) {
 
     CopysetPeerInfo<ChunkServerID> cs;
     cs.peerID = 1;
-    cs.internalAddr = PeerAddr(EndPoint(listenAddr_));
+    EndPoint ep;
+    str2endpoint(listenAddr_.c_str(), &ep);
+    cs.internalAddr = PeerAddr(ep);
     uint64_t fileId = 1;
     uint64_t epoch = 1;
     auto tracker = std::make_shared<TaskTracker>();

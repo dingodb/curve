@@ -24,6 +24,6 @@ cc_library(
     copts = CURVE_DEFAULT_COPTS,
     visibility = ["//visibility:public"],
     deps = [
-        "//external:json",
+        "@jsoncpp//:jsoncpp",
     ],
 )

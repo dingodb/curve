@@ -23,10 +23,9 @@ cc_test(
         "-DFIU_ENABLE",
     ],
     deps = [
-            "@com_google_googletest//:gtest_main",
-            "@com_google_googletest//:gtest",
+            "@gtest//:gtest",
+            "@libfiu//:libfiu",
     ],
-    linkopts = ["-lfiu"],
 )
 
 # https://docs.bazel.build/versions/master/be/c-cpp.html#cc_library

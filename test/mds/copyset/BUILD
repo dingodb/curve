@@ -19,6 +19,9 @@ load("//:copts.bzl", "CURVE_TEST_COPTS")
 cc_test(
         name = "copyset_utest",
         srcs = glob(["*.cpp", "*.h"]),
-        deps = ["//external:gtest", "//src/mds/copyset:copyset"],
+        deps = [
+                "//src/mds/copyset:copyset",
+                "@gtest//:gtest",
+        ],
         copts = CURVE_TEST_COPTS,
         )

@@ -25,6 +25,7 @@
 #include <stdint.h>
 #include <sys/time.h>
 #include <sys/types.h>
+#include <time.h>
 #include <string>
 #include <vector>
 

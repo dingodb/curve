@@ -104,7 +104,7 @@ class ChunkIdAllocatorImpl : public ChunkIdAllocator {
     virtual void Init(
         const std::shared_ptr<KVStorageClient>& client = nullptr,
         const std::string& chunkIdStoreKey = CHUNKID_NAME_KEY_PREFIX,
-        uint64_t bundleSize = CHUNKBUNDLEALLOCATED);
+        uint64_t bundleSize = CHUNKBUNDLEALLOCATED) override;
     /**
      * @brief get bundleSize chunkIds from etcd
      *

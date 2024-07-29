@@ -23,9 +23,9 @@ cc_binary(
     ]),
     copts = CURVE_TEST_COPTS,
     deps = [
-        "//external:gflags",
         "//nebd/src/part1:nebdclient",
-        "@com_google_googletest//:gtest_main",
+        "@gflags//:gflags",
+        "@gtest//:gtest",
     ],
 )
 
@@ -36,10 +36,10 @@ cc_binary(
     ]),
     copts = CURVE_TEST_COPTS,
     deps = [
-        "//external:gflags",
         "//nebd/src/part1:nebdclient",
         "//nebd/test/part1:fake_lib",
-        "@com_google_googletest//:gtest_main",
+        "@gflags//:gflags",
+        "@gtest//:gtest",
     ],
 )
 
@@ -51,11 +51,11 @@ cc_binary(
     copts = CURVE_TEST_COPTS,
     linkstatic = False,
     deps = [
-        "//external:gflags",
         "//nebd/src/part1:nebdclient",
         "//nebd/test/part1:fake_lib",
         "//nebd/test/utils:test_utils_lib",
-        "@com_google_googletest//:gtest_main",
+        "@gflags//:gflags",
+        "@gtest//:gtest",
     ],
 )
 
@@ -67,11 +67,11 @@ cc_binary(
     copts = CURVE_TEST_COPTS,
     linkstatic = False,
     deps = [
-        "//external:gflags",
         "//nebd/src/part1:nebdclient",
         "//nebd/test/part1:fake_lib",
         "//nebd/test/utils:test_utils_lib",
-        "@com_google_googletest//:gtest_main",
+        "@gflags//:gflags",
+        "@gtest//:gtest",
     ],
 )
 
@@ -86,6 +86,6 @@ cc_library(
     visibility = ["//visibility:public"],
     deps = [
         "//nebd/src/part1:nebdclient",
-        "@com_google_googletest//:gtest",
+        "@gtest//:gtest",
     ],
 )

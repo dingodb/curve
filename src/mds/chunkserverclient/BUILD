@@ -25,10 +25,10 @@ cc_library(
     copts = CURVE_DEFAULT_COPTS,
     visibility = ["//visibility:public"],
     deps = [
-        "//external:brpc",
-        "//external:glog",
         "//proto:chunkserver-cc-protos",
         "//src/mds/common:mds_common",
-        "//src/mds/topology:topology"
+        "//src/mds/topology:topology",
+        "@brpc//:brpc",
+        "@glog//:glog",
     ],
 )
