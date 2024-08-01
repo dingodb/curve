@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # cpplint --recursive curvefs
 # if [ $? -ne 0 ]

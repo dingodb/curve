@@ -77,7 +77,9 @@ class IteratorTest : public ::testing::Test {
 
     bool ExecShell(const std::string& cmd, std::string* ret) {
         std::array<char, 128> buffer;
-        std::unique_ptr<FILE, decltype(&pclose)>
+
+        using PcloseDeleter = int(*)(FILE*);
+        std::unique_ptr<FILE, PcloseDeleter>
             pipe(popen(cmd.c_str(), "r"), pclose);
         if (!pipe) {
             return false;

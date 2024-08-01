@@ -62,7 +62,6 @@ cc_library(
     linkopts = [
         "-lrt",
         "-ldl",
-        "-lz",
     ],
     visibility = ["//visibility:public"],
     deps = [
@@ -74,6 +73,7 @@ cc_library(
         "@gflags//:gflags",
         "@protobuf//:protobuf",
         "@openssl//:openssl",
+        "@zlib//:zlib",
     ],
 )
 

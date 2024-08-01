@@ -118,7 +118,9 @@ class CurveSegmentLogStorageTest : public testing::Test {
     std::string execShell(const string& cmd) {
         std::array<char, 128> buffer;
         std::string result;
-        std::unique_ptr<FILE, decltype(&pclose)> pipe(popen(cmd.c_str(), "r"),
+
+        using PcloseDeleter = int(*)(FILE*);
+        std::unique_ptr<FILE, PcloseDeleter> pipe(popen(cmd.c_str(), "r"),
                                                       pclose);
         if (!pipe) {
             throw std::runtime_error("popen() failed!");
